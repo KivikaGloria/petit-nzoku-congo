@@ -1,0 +1,156 @@
+/* jeux/nettoye-fleuve.css */
+
+.jeu-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* En-tête du jeu */
+.jeu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.score-box {
+    background: #009639;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.timer-box {
+    background: #e3211c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.niveau-box {
+    background: #fbde4a;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+/* Zone de jeu */
+.canvas-container {
+    background: #87CEEB; /* Bleu ciel */
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#jeuCanvas {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    border-radius: 15px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #87CEEB 0%, #1E90FF 100%);
+}
+
+/* Message éducatif */
+.message-educatif {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contrôles */
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+/* Conseils écologiques */
+.conseils-eco {
+    background: #e8f4fd;
+    border-left: 5px solid #009639;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.conseils-eco h3 {
+    color: #009639;
+    margin-bottom: 10px;
+}
+
+.conseils-eco p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Options accessibilité */
+.options-accessibilite {
+    background: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .jeu-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .controles {
+        flex-direction: column;
+    }
+    
+    .controles .bouton {
+        width: 100%;
+    }
+}
+/* Style pour les cartes cliquables */
+.carte-jeu[onclick] {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carte-jeu[onclick]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,150,57,0.2);
+    border-color: #009639;
+}
+
+.carte-jeu[onclick]:active {
+    transform: translateY(0px);
+}

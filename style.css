@@ -1,0 +1,388 @@
+/* style.css - Version Congo-Brazzaville (Vert, Jaune, Rouge) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header avec couleurs du drapeau */
+header {
+    background: linear-gradient(135deg, #009639 0%, #fbde4a 50%, #e3211c 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    border: 4px solid white;
+    background: white;
+    padding: 5px;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.slogan {
+    font-size: 1.3rem;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Drapeau dans la présentation */
+.drapeau {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.drapeau span {
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.vert { background-color: #009639; }
+.jaune { background-color: #fbde4a; }
+.rouge { background-color: #e3211c; }
+
+/* Sections principales */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #009639;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #009639, #fbde4a, #e3211c);
+    border-radius: 2px;
+}
+
+/* Présentation */
+.presentation {
+    text-align: center;
+    background: #fff3cd;
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 5px solid #e3211c;
+    border-right: 5px solid #009639;
+    font-size: 1.2rem;
+}
+
+/* Grille des jeux */
+.grille-jeux {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.carte-jeu {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.carte-jeu:hover:not(.a-venir) {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,150,57,0.2);
+    border-color: #009639;
+}
+
+.emoji-jeu {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.carte-jeu h3 {
+    color: #e3211c;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.details {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+.a-venir {
+    opacity: 0.7;
+    filter: grayscale(50%);
+    cursor: not-allowed;
+}
+
+.badge {
+    background: #fbde4a;
+    color: #333;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+/* Boutons */
+.bouton {
+    display: inline-block;
+    background: #009639;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    font-size: 1rem;
+}
+
+.bouton:hover {
+    background: #007a2e;
+    transform: scale(1.05);
+}
+
+/* Section inclusion */
+.inclusion {
+    background: #e8f4fd;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.features-inclusion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.feature {
+    padding: 1rem;
+}
+
+.feature-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.feature h3 {
+    color: #009639;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.footer-small {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .grille-jeux {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        padding: 1rem;
+    }
+}
+/* ============================================
+   CORRECTION DE LA GRILLE DES JEUX
+   ============================================ */
+
+.grille-jeux {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.carte-jeu {
+    background: white;
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 320px;
+    border: 2px solid transparent;
+}
+
+.carte-jeu:hover:not(.a-venir) {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,150,57,0.2);
+    border-color: #009639;
+}
+
+.emoji-jeu {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+}
+
+.carte-jeu h3 {
+    color: #e3211c;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.carte-jeu p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.details {
+    color: #009639;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px;
+    background: #f0f8ff;
+    border-radius: 30px;
+}
+
+.bouton {
+    display: inline-block;
+    background: #009639;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+    margin-top: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bouton:hover {
+    background: #007a2e;
+    transform: scale(1.05);
+}
+
+/* Style pour les jeux à venir */
+.a-venir {
+    opacity: 0.8;
+    filter: grayscale(30%);
+    background: #f5f5f5;
+    position: relative;
+    overflow: hidden;
+}
+
+.a-venir::before {
+    content: "🔜";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    opacity: 0.5;
+    transform: rotate(15deg);
+}
+
+.badge {
+    background: #fbde4a;
+    color: #333;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grille-jeux {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .carte-jeu {
+        min-height: 280px;
+        padding: 15px;
+    }
+    
+    .emoji-jeu {
+        font-size: 3rem;
+    }
+    
+    .carte-jeu h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grille-jeux {
+        grid-template-columns: 1fr;
+    }
+}

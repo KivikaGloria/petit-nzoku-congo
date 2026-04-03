@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Nzoku - Découvre le Congo-Brazzaville en jouant !</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* CORRECTION URGENTE POUR LA GRILLE */
+    .grille-jeux {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important;
+    }
+    
+    @media (max-width: 900px) {
+        .grille-jeux {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .grille-jeux {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    
+    .carte-jeu {
+        height: 100% !important;
+        min-height: 300px !important;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <img src="c:\Users\PC\Documents\petit nzokou\images\quiz\elephant.jpg" alt="Logo Petit Nzoku" class="logo" onerror="this.src='https://via.placeholder.com/120?text=🐘'">
+        <h1>🐘 Petit Nzoku</h1>
+        <p class="slogan">Joue, apprends et découvre le Congo-Brazzaville !</p>
+    </header>
+
+    <main>
+        <section class="presentation">
+            <h2>Bienvenue au pays des éléphants !</h2>
+            <p>Nzoku signifie <strong>"éléphant"</strong> dans nos langues. Comme cet animal majestueux, tu es fort et sage. Viens apprendre en t'amusant sur ton beau pays, le Congo-Brazzaville !</p>
+            <div class="drapeau">
+                <span class="vert"></span>
+                <span class="jaune"></span>
+                <span class="rouge"></span>
+            </div>
+        </section>
+
+       <section class="jeux">
+    <h2>🎮 Nos jeux éducatifs</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+        
+        <!-- Quiz du Congo -->
+        <div style="flex: 0 0 calc(25% - 20px); min-width: 250px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent;">
+            <div style="font-size: 4rem; margin-bottom: 15px;">❓</div>
+            <h3 style="color: #e3211c; font-size: 1.4rem; margin-bottom: 10px;">Quiz du Congo</h3>
+            <p style="color: #555; margin-bottom: 10px; flex-grow: 1;">Teste tes connaissances sur notre beau pays !</p>
+            <p style="color: #009639; font-size: 0.9rem; margin: 10px 0; padding: 5px; background: #f0f8ff; border-radius: 30px;">
+    <img src="c:\Users\PC\Documents\petit nzokou\images\quiz\Langue.jpeg" alt="Drapeau Congo" style="width:20px; vertical-align:middle;">
+    30 questions · Culture · Histoire · Nature
+</p>
+            <a href="jeux/quiz.html" style="display: inline-block; background: #009639; color: white; padding: 10px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; width: fit-content; margin-left: auto; margin-right: auto;">Jouer</a>
+        </div>
+        
+        <!-- Memory des animaux -->
+        <div style="flex: 0 0 calc(25% - 20px); min-width: 250px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent;">
+            <div style="font-size: 4rem; margin-bottom: 15px;">🧠</div>
+            <h3 style="color: #e3211c; font-size: 1.4rem; margin-bottom: 10px;">Memory des animaux</h3>
+            <p style="color: #555; margin-bottom: 10px; flex-grow: 1;">Découvre les animaux de nos forêts</p>
+            <p style="color: #009639; font-size: 0.9rem; margin: 10px 0; padding: 5px; background: #f0f8ff; border-radius: 30px;">🐘 4 niveaux · 10 animaux</p>
+            <a href="jeux/memory-animaux.html" style="display: inline-block; background: #009639; color: white; padding: 10px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; width: fit-content; margin-left: auto; margin-right: auto;">Jouer</a>
+        </div>
+        
+        <!-- Nettoie le fleuve Congo -->
+        <div style="flex: 0 0 calc(25% - 20px); min-width: 250px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent;">
+            <div style="font-size: 4rem; margin-bottom: 15px;">🌊</div>
+            <h3 style="color: #e3211c; font-size: 1.4rem; margin-bottom: 10px;">Nettoie le fleuve Congo</h3>
+            <p style="color: #555; margin-bottom: 10px; flex-grow: 1;">Protège notre environnement</p>
+            <p style="color: #009639; font-size: 0.9rem; margin: 10px 0; padding: 5px; background: #f0f8ff; border-radius: 30px;">♻️ 4 niveaux · Conseils écolos</p>
+            <a href="jeux/nettoye-fleuve.html" style="display: inline-block; background: #009639; color: white; padding: 10px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; width: fit-content; margin-left: auto; margin-right: auto;">Jouer</a>
+        </div>
+        
+        <!-- Les 12 départements (Bientôt) -->
+       <!-- Les 15 départements -->
+<div style="flex: 0 0 calc(25% - 20px); min-width: 250px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent;">
+    <div style="font-size: 4rem; margin-bottom: 15px;">🗺️</div>
+    <h3 style="color: #e3211c; font-size: 1.4rem; margin-bottom: 10px;">Les 15 départements</h3>
+    <p style="color: #555; margin-bottom: 10px; flex-grow: 1;">Apprends la géographie du Congo</p>
+    <p style="color: #009639; font-size: 0.9rem; margin: 10px 0; padding: 5px; background: #f0f8ff; border-radius: 30px;">📍 15 départements · Chefs-lieux</p>
+    <a href="jeux/departements.html" style="display: inline-block; background: #009639; color: white; padding: 10px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; width: fit-content; margin-left: auto; margin-right: auto;">Jouer</a>
+</div>
+    </div>
+</section>
+
+        <section class="inclusion">
+            <h2>💛 Pour tous les enfants</h2>
+            <div class="features-inclusion">
+                <div class="feature">
+                    <span class="feature-emoji">🖼️</span>
+                    <h3>Pictogrammes</h3>
+                    <p>Pour les enfants qui ne lisent pas encore</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-emoji">🤟</span>
+                    <h3>Langue des signes</h3>
+                    <p>Pour les enfants sourds (bientôt)</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-emoji">🔊</span>
+                    <h3>Sons et voix</h3>
+                    <p>Pour les enfants malvoyants</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-emoji">📖</span>
+                    <h3>Explication</h3>
+                    <p>Apprends après chaque réponse</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Petit Nzoku - Éducation et culture du Congo-Brazzaville</p>
+        <p class="footer-small">🐘 "Nzoku" = éléphant - Symbole de sagesse et de force </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

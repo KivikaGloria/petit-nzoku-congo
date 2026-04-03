@@ -1,0 +1,556 @@
+/* jeux/quiz.css - Version Congo-Brazzaville */
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* En-tête du quiz */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.score-box {
+    background: #009639;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.score-label {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.score-valeur {
+    font-size: 1.5rem;
+    background: white;
+    color: #009639;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 0 5px;
+}
+
+.score-max {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.etoiles-box {
+    font-size: 1.8rem;
+    color: #fbde4a;
+    letter-spacing: 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.question-number {
+    background: #e3211c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+/* Boîte de question */
+.question-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    text-align: center;
+    border: 3px solid #fbde4a;
+}
+
+.question-box h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.question-box h2:after {
+    display: none;
+}
+
+.question-image {
+    margin-top: 20px;
+}
+
+.question-image img {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 10px;
+    border: 3px solid #009639;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Zone des réponses */
+.reponses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-reponse {
+    background: #f8f8f8;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+}
+
+.btn-reponse:hover:not(:disabled) {
+    background: #e8f4fd;
+    border-color: #009639;
+    transform: translateX(5px);
+}
+
+.btn-reponse.correct {
+    background: #4CAF50;
+    border-color: #2e7d32;
+    color: white;
+    animation: bravo 0.5s ease;
+}
+
+.btn-reponse.incorrect {
+    background: #f44336;
+    border-color: #c62828;
+    color: white;
+    animation: secousse 0.3s ease;
+}
+
+.btn-reponse:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.picto {
+    font-size: 2rem;
+}
+
+/* Animations */
+@keyframes bravo {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); background: #4CAF50; }
+    100% { transform: scale(1); }
+}
+
+@keyframes secousse {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Style pour l'image dans le feedback */
+.feedback-image {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.feedback-image img {
+    max-width: 250px;
+    max-height: 180px;
+    border-radius: 15px;
+    border: 4px solid #009639;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.image-legende {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Animation pour l'image */
+@keyframes apparitionImage {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Style pour l'image dans le feedback - Version simplifiée */
+/* ====================================
+   ✨ DESIGN ÉLÉGANT POUR LE FEEDBACK
+   ==================================== */
+
+.feedback {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 30px 0;
+}
+
+.feedback-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Badge de résultat */
+.feedback-badge {
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.feedback-badge.bonne {
+    background: #4CAF50;
+    color: white;
+}
+
+.feedback-badge.mauvaise {
+    background: #f44336;
+    color: white;
+}
+
+/* Conteneur d'image */
+.feedback-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.feedback-image {
+    max-width: 280px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+
+.feedback-image:hover {
+    transform: scale(1.02);
+}
+
+/* Carte d'explication */
+.feedback-explication {
+    background: #f8f9fa;
+    border-left: 4px solid #009639;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.explication-texte {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+}
+
+/* Animation d'apparition */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedback-content > * {
+    animation: slideUp 0.4s ease forwards;
+}
+
+.feedback-content > *:nth-child(1) { animation-delay: 0s; }
+.feedback-content > *:nth-child(2) { animation-delay: 0.1s; }
+.feedback-content > *:nth-child(3) { animation-delay: 0.2s; }
+
+/* Bouton suivant */
+#btn-suivant {
+    display: block;
+    width: 250px;
+    margin: 20px auto;
+    font-size: 1.3rem;
+    padding: 15px 30px;
+}
+
+/* Options accessibilité */
+.options-accessibilite {
+    background: #e8f4fd;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.options-accessibilite h3 {
+    color: #009639;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.option-grille {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.switch-label {
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.option-emoji {
+    font-size: 1.3rem;
+}
+
+.bouton-icone {
+    background: #009639;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s;
+}
+
+.bouton-icone:hover {
+    background: #007a2e;
+}
+
+/* Choix du nombre de questions */
+.choix-nb-questions {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+}
+
+.choix-nb-questions p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.nb-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-nb {
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-nb:hover {
+    background: #fbde4a;
+}
+
+.btn-nb.active {
+    background: #009639;
+    color: white;
+    border-color: #007a2e;
+}
+
+/* Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #009639;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.message-signes {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background: #fbde4a;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .reponses {
+        grid-template-columns: 1fr;
+    }
+    
+    .quiz-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .option-grille {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .option {
+        justify-content: space-between;
+    }
+    
+    .question-box h2 {
+        font-size: 1.3rem;
+    }
+    
+    .nb-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* Résultats finaux */
+.resultats {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.resultats h2 {
+    color: #009639;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.grand-score {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #e3211c;
+    text-shadow: 3px 3px 0 #fbde4a;
+    display: block;
+    margin: 20px 0;
+}
+
+.message-resultat {
+    font-size: 1.3rem;
+    margin: 30px 0;
+    line-height: 1.8;
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.resultats .bouton {
+    margin: 10px;
+    min-width: 150px;
+}
+/* Responsive pour mobile */
+@media (max-width: 600px) {
+    .feedback {
+        padding: 20px;
+    }
+    
+    .feedback-badge {
+        font-size: 1rem;
+        padding: 6px 20px;
+    }
+    
+    .feedback-image {
+        max-width: 100%;
+        max-height: 160px;
+    }
+    
+    .explication-texte {
+        font-size: 1rem;
+    }
+}

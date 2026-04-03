@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 15 départements - Petit Nzoku</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="departements.css">
+</head>
+<body>
+    <header>
+        <h1>🗺️ Les 15 départements du Congo</h1>
+        <p>Apprends la géographie de notre pays !</p>
+    </header>
+
+    <main>
+        <div class="departements-container">
+            <!-- En-tête du jeu -->
+            <div class="departements-header">
+                <div class="score-box">
+                    <span class="score-label">Score</span>
+                    <span class="score-valeur" id="score">0</span>
+                    <span class="score-max" id="total-questions">15</span>
+                </div>
+                
+                <div class="timer-box" id="timer">
+                    ⏱️ <span id="temps">60</span>s
+                </div>
+                
+                <div class="niveau-box">
+                    Question <span id="question-actuelle">1</span>/15
+                </div>
+            </div>
+
+            <!-- Zone de jeu -->
+            <div class="jeu-principal">
+                <!-- Carte du Congo -->
+                <div class="carte-container">
+                    <img src="c:\Users\PC\Documents\petit nzokou\images\quiz\departement.jpg" alt="Carte du Congo" id="carte-congo" class="carte-congo">
+                    <div class="departement-highlight" id="highlight"></div>
+                </div>
+
+                <!-- Question et réponses -->
+                <div class="quiz-section">
+                    <div class="question-box">
+                        <h2 id="question">Dans quel département se trouve ?</h2>
+                        <p id="nom-departement" class="nom-departement"></p>
+                    </div>
+
+                    <div class="reponses-departements" id="reponses">
+                        <!-- Les boutons seront générés par JS -->
+                    </div>
+
+                    <!-- Feedback -->
+                    <div class="feedback" id="feedback" style="display: none;">
+                        <p id="feedback-message"></p>
+                        <div class="info-departement" id="info-departement">
+                            <p id="chef-lieu"></p>
+                            <p id="superficie"></p>
+                            <p id="population"></p>
+                        </div>
+                    </div>
+
+                    <!-- Bouton suivant -->
+                    <button id="btn-suivant" class="bouton" style="display: none;">Question suivante</button>
+                </div>
+            </div>
+
+            <!-- Contrôles -->
+            <div class="controles">
+                <button id="btn-recommencer" class="bouton">🔄 Recommencer</button>
+            </div>
+
+            <!-- Options d'accessibilité -->
+            <div class="options-accessibilite">
+                <h3>🖐️ Options</h3>
+                <div class="option-grille">
+                    <div class="option">
+                        <label class="switch-label">
+                            <span class="option-emoji">🔊</span> Sons
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="mode-son" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="../index.html" class="bouton">← Retour à l'accueil</a>
+    </footer>
+
+    <script src="departements.js"></script>
+</body>
+</html>
