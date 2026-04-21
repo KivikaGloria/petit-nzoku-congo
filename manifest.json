@@ -1,0 +1,21 @@
+{
+  "name": "Petit Nzoku - Apprendre le Congo",
+  "short_name": "Petit Nzoku",
+  "description": "Jeux éducatifs sur la culture et la géographie du Congo.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#009639",
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
