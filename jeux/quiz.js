@@ -158,7 +158,7 @@ const TOUTES_LES_QUESTIONS = [
     
     // 15. Festival
     {
-        question: "Quel grand festival a lieu chaque année à Brazzaville ?",
+        question: "Quel grand festival a lieu tous les deux ans à Brazzaville ?",
         options: ["FESPAM", "FESPACO", "FEMUA", "FIMU"],
         correct: 0,
         explication: "Le FESPAM (Festival Panafricain de Musique) a lieu à Brazzaville et attire des artistes de tout le continent !",
@@ -196,7 +196,7 @@ const TOUTES_LES_QUESTIONS = [
         options: ["Le capitaine", "La carpe", "Le tilapia", "Le mbenga"],
         correct: 0,
         explication: "Le capitaine (ou poisson-chat) est très apprécié, surtout le 'liboke' (cuit à l'étouffée dans des feuilles).",
-        image: "Liboke.JPG",
+        image: "capiatine.jpg",
         pictos: ["🐟", "🐠", "🐡", "🎣"]
     },
     
@@ -485,10 +485,14 @@ function changerNbQuestions(nb) {
 // 🎨 AFFICHAGE
 // =============================================
 function afficherQuestion() {
+    // AJOUTE CETTE LIGNE ICI :
+    window.scrollTo(0, 0); 
+    
     const q = questions[questionActuelle];
     
     questionActuelleEl.textContent = questionActuelle + 1;
     questionEl.textContent = q.question;
+    
     
     // 🚫 NE PLUS AFFICHER L'IMAGE ICI
     // On la cache complètement

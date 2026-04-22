@@ -386,3 +386,42 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* Donne un aspect "Application" au toucher */
+* {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none; /* Empêche de copier le texte par erreur en jouant */
+}
+
+input, textarea {
+    user-select: text; /* Permet quand même d'écrire dans les champs si besoin */
+}
+
+body {
+    overscroll-behavior-y: contain; /* Empêche le "rebond" quand on tire vers le haut */
+}
+/* Rend les boutons réactifs comme une vraie application */
+button, .bouton, a {
+    touch-action: manipulation;
+}
+
+.ton-element-score {
+    display: inline-block;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    min-width: 100px;    /* Donne assez de place au texte */
+}
+
+.conteneur-etoiles {
+    display: flex;
+    flex-wrap: wrap;       /* Les étoiles passeront à la ligne si besoin */
+    justify-content: center;
+    gap: 10px;             /* Un petit espace entre chaque étoile */
+    width: 100%;           /* Prend toute la largeur disponible */
+    max-width: 300px;      /* Empêche de devenir trop large */
+    margin: 0 auto;        /* Centre le tout */
+    padding: 10px;
+}
+
+.etoile {
+    font-size: 2rem;       /* Ajuste la taille pour que ça tienne */
+    flex-shrink: 0;        /* Empêche les étoiles de s'écraser */
+}
