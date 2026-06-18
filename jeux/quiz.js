@@ -45,7 +45,7 @@ const TOUTES_LES_QUESTIONS = [
     options: ["8", "10", "15", "14"],
     correct: 2,
     explication: "La République Congo compte 15 départements depuis la réforme de 2024 : Brazzaville, Pointe-Noire, Bouenza, Congo-Oubangui, Cuvette, Cuvette-Ouest, Djoué-Léfini, Kouilou, Lékoumou, Likouala, Niari, Nkéni-Alima, Plateaux, Pool, Sangha.",
-    image: "carte.jpg",
+    image: "departement c.jpg",
     pictos: ["8️⃣", "1️⃣0️⃣", "1️⃣5️⃣", "1️⃣4️⃣"] // ← 1️⃣5️⃣ au lieu de 1️⃣2️⃣
 },
     // 5. Pointe-Noire
@@ -447,21 +447,19 @@ function initSons() {
     }
 }
 
-// =============================================
-// ❓ FONCTIONS QUESTIONS
-// =============================================
 
 function selectionnerQuestions(nbQuestions = 10) {
-    // On crée une copie pour ne pas modifier l'original
-    let melange = [...TOUTES_LES_QUESTIONS];
-    
-    // Algorithme de mélange
-    for (let i = melange.length - 1; i > 0; i--) {
+    // 1. On crée une copie de toutes les questions
+    let stock = [...TOUTES_LES_QUESTIONS];
+
+    // 2. Mélange complet (Fisher-Yates)
+    for (let i = stock.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [melange[i], melange[j]] = [melange[j], melange[i]];
+        [stock[i], stock[j]] = [stock[j], stock[i]];
     }
-    
-    return melange.slice(0, nbQuestions);
+
+    // 3. On retourne le nombre demandé
+    return stock.slice(0, nbQuestions);
 }
 function changerNbQuestions(nb) {
     questions = selectionnerQuestions(nb);
@@ -573,7 +571,9 @@ function verifierReponse(index) {
     btnSuivant.style.display = 'block';
     
     mettreAJourScore();
-    
+   
+    feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+   
     if (questionActuelle === questions.length - 1) {
         btnSuivant.textContent = 'Voir les résultats';
     }
@@ -616,29 +616,35 @@ function getMessageFelicitations(score, total) {
 function afficherResultats() {
     const total = questions.length;
     const pourcentage = Math.round((score / total) * 100);
-    
     let message = getMessageFelicitations(score, total);
     
-    if (score === total) {
-        jouerSon('bravo');
-    }
-    
+    // On calcule le palier suivant : 5 -> 10 -> 15...
+    let prochainNiveau = total + 5;
+    if (prochainNiveau > 30) prochainNiveau = 5;
+
     const container = document.querySelector('.quiz-container');
+    
     container.innerHTML = `
-        <div class="resultats">
+        <div class="resultats" id="resultats-final">
             <h2>🏆 Quiz terminé !</h2>
             <div class="grand-score">${score}/${total}</div>
             <p class="message-resultat">${message}</p>
-            <p>Tu as obtenu ${pourcentage}% de bonnes réponses !</p>
+            
             <div class="drapeau" style="margin: 20px 0;">
                 <span class="vert"></span>
                 <span class="jaune"></span>
                 <span class="rouge"></span>
             </div>
-            <button onclick="location.reload()" class="bouton">🔁 Rejouer</button>
+            
+            <button onclick="window.location.search = '?n=' + ${prochainNiveau};" class="bouton">
+                🔁 Rejouer
+            </button>
+            
             <a href="../index.html" class="bouton">🏠 Accueil</a>
         </div>
     `;
+
+    document.getElementById('resultats-final').scrollIntoView({ behavior: 'smooth' });
 }
 
 // =============================================
@@ -646,13 +652,17 @@ function afficherResultats() {
 // =============================================
 
 function mettreAJourScore() {
-    scoreEl.textContent = score;
+    if (scoreEl) scoreEl.textContent = score;
     
     if (etoilesEl) {
+        // Au lieu d'afficher 30 étoiles qui dépassent du cadre
+        // On affiche : ⭐ 5 / 10
         const total = questions.length;
-        const etoilesPleines = '★'.repeat(score);
-        const etoilesVides = '☆'.repeat(total - score);
-        etoilesEl.textContent = etoilesPleines + etoilesVides;
+        etoilesEl.innerHTML = `<span style="color: #f1c40f;">⭐</span> ${score} / ${total}`;
+        
+        // On peut aussi ajouter une petite animation de saut quand le score change
+        etoilesEl.style.transform = "scale(1.2)";
+        setTimeout(() => etoilesEl.style.transform = "scale(1)", 200);
     }
 }
 
@@ -682,16 +692,19 @@ function lireQuestion() {
 function initQuiz() {
     initSons();
     
-    // Initialiser avec 10 questions par défaut
-    changerNbQuestions(10);
+    // 1. On regarde ce qu'il y a dans l'adresse (ex: ?n=10)
+    const urlParams = new URLSearchParams(window.location.search);
+    const niveauURL = urlParams.get('n');
     
-    // Event listeners pour le choix du nombre de questions
-    document.querySelectorAll('.btn-nb').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const nb = parseInt(e.target.dataset.nb);
-            changerNbQuestions(nb);
-        });
-    });
+    // 2. Si un chiffre existe, on le prend. Sinon, on commence à 5.
+    let nbACharger = niveauURL ? parseInt(niveauURL) : 5;
+    
+    // 3. Sécurité : on s'assure que c'est bien un nombre entre 5 et 30
+    if (isNaN(nbACharger) || nbACharger < 5) nbACharger = 5;
+    if (nbACharger > 30) nbACharger = 30;
+    
+    // 4. On lance le jeu
+    changerNbQuestions(nbACharger);
 }
 
 // Event listeners

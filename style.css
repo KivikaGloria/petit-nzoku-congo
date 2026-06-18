@@ -1,9 +1,16 @@
-/* style.css - Version Congo-Brazzaville (Vert, Jaune, Rouge) */
+/* style.css - Version Congo-Brazzaville (Vert, Jaune, Rouge) Magnifiée */
 
+/* --- 1. Initialisation générale & Confort Mobile --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu au clic sur mobile */
+    user-select: none; /* Empêche de copier le texte par erreur en jouant */
+}
+
+input, textarea {
+    user-select: text; /* Permet d'écrire dans les champs si besoin */
 }
 
 body {
@@ -11,9 +18,15 @@ body {
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
+    overscroll-behavior-y: contain; /* Empêche le rebond forcé de la page vers le haut */
 }
 
-/* Header avec couleurs du drapeau */
+/* Optimisation tactile pour tous les boutons */
+button, .bouton, a, .btn-reponse, .carte-jeu {
+    touch-action: manipulation;
+}
+
+/* --- 2. Header & Identité Nationale --- */
 header {
     background: linear-gradient(135deg, #009639 0%, #fbde4a 50%, #e3211c 100%);
     color: white;
@@ -31,12 +44,20 @@ header {
     background: white;
     padding: 5px;
     object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+/* Effet Waouh au toucher sur le logo */
+.logo:active {
+    transform: scale(0.95);
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 1.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .slogan {
@@ -45,7 +66,6 @@ h1 {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Drapeau dans la présentation */
 .drapeau {
     display: flex;
     justify-content: center;
@@ -63,7 +83,7 @@ h1 {
 .jaune { background-color: #fbde4a; }
 .rouge { background-color: #e3211c; }
 
-/* Sections principales */
+/* --- 3. Layout Principal --- */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -95,7 +115,6 @@ h2:after {
     border-radius: 2px;
 }
 
-/* Présentation */
 .presentation {
     text-align: center;
     background: #fff3cd;
@@ -106,148 +125,7 @@ h2:after {
     font-size: 1.2rem;
 }
 
-/* Grille des jeux */
-.grille-jeux {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.carte-jeu {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-    position: relative;
-    border: 2px solid transparent;
-}
-
-.carte-jeu:hover:not(.a-venir) {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,150,57,0.2);
-    border-color: #009639;
-}
-
-.emoji-jeu {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-}
-
-.carte-jeu h3 {
-    color: #e3211c;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-}
-
-.details {
-    color: #666;
-    font-size: 0.9rem;
-    margin: 1rem 0;
-    font-style: italic;
-}
-
-.a-venir {
-    opacity: 0.7;
-    filter: grayscale(50%);
-    cursor: not-allowed;
-}
-
-.badge {
-    background: #fbde4a;
-    color: #333;
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 0.5rem;
-}
-
-/* Boutons */
-.bouton {
-    display: inline-block;
-    background: #009639;
-    color: white;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 50px;
-    margin-top: 1rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    font-size: 1rem;
-}
-
-.bouton:hover {
-    background: #007a2e;
-    transform: scale(1.05);
-}
-
-/* Section inclusion */
-.inclusion {
-    background: #e8f4fd;
-    padding: 2rem;
-    border-radius: 15px;
-}
-
-.features-inclusion {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: center;
-}
-
-.feature {
-    padding: 1rem;
-}
-
-.feature-emoji {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.feature h3 {
-    color: #009639;
-    margin-bottom: 0.5rem;
-}
-
-/* Footer */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 2rem;
-}
-
-.footer-small {
-    font-size: 0.9rem;
-    color: #ccc;
-    margin-top: 0.5rem;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
-    }
-    
-    .grille-jeux {
-        grid-template-columns: 1fr;
-    }
-    
-    header {
-        padding: 1rem;
-    }
-}
-/* ============================================
-   CORRECTION DE LA GRILLE DES JEUX
-   ============================================ */
-
+/* --- 4. Hub & Grille des Jeux --- */
 .grille-jeux {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -260,18 +138,23 @@ footer {
     border-radius: 20px;
     padding: 25px 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
     text-align: center;
     display: flex;
     flex-direction: column;
     height: 100%;
     min-height: 320px;
     border: 2px solid transparent;
+    position: relative;
+}
+
+/* Micro-animation au clic sur une carte de jeu */
+.carte-jeu:active:not(.a-venir) {
+    transform: scale(0.97);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .carte-jeu:hover:not(.a-venir) {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,150,57,0.2);
     border-color: #009639;
 }
 
@@ -304,35 +187,11 @@ footer {
     border-radius: 30px;
 }
 
-.bouton {
-    display: inline-block;
-    background: #009639;
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 1.1rem;
-    margin-top: auto;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bouton:hover {
-    background: #007a2e;
-    transform: scale(1.05);
-}
-
-/* Style pour les jeux à venir */
 .a-venir {
     opacity: 0.8;
     filter: grayscale(30%);
     background: #f5f5f5;
-    position: relative;
+    cursor: not-allowed;
     overflow: hidden;
 }
 
@@ -360,68 +219,166 @@ footer {
     margin-right: auto;
 }
 
-/* Responsive */
+/* --- 5. Boutons de Contrôle --- */
+.bouton {
+    display: inline-block;
+    background: #009639;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+    margin-top: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 6px rgba(0, 150, 57, 0.2);
+}
+
+/* Micro-rebond tactile de l'application sur le bouton */
+.bouton:active {
+    transform: scale(0.95);
+    background: #007a2e;
+    box-shadow: 0 2px 4px rgba(0, 150, 57, 0.1);
+}
+
+/* --- 6. Interface Interne du Quiz & Alignements Forcés --- */
+.header-quiz {
+    display: flex;
+    flex-direction: row; /* Aligne obligatoirement sur la même ligne */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#chrono-conteneur {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap; /* Empêche le chrono de se scinder */
+}
+
+.ton-element-score {
+    display: inline-block;
+    white-space: nowrap; /* Bloque le score sur une seule ligne */
+    min-width: 100px;
+}
+
+.conteneur-etoiles {
+    display: flex;
+    flex-direction: row; /* Force les étoiles côte à côte */
+    justify-content: center;
+    white-space: nowrap;
+    gap: 3px;
+}
+
+.etoile {
+    font-size: 1.4rem;
+    flex: 0 0 auto;
+}
+
+/* Boutons de choix de réponse dans le Quiz */
+.btn-reponse {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.2s;
+}
+
+/* Effet d'enfoncement instantané hyper satisfaisant sur téléphone */
+.btn-reponse:active:not(:disabled) {
+    transform: scale(0.98);
+    background-color: #f0f0f0;
+}
+
+/* --- 7. Fonctionnalités Spécifiques (Micro, Inclusion, Footer) --- */
+.bouton-micro {
+    background: #e3211c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.bouton-micro.ecoute {
+    background: #fbde4a;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(227, 33, 28, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(227, 33, 28, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(227, 33, 28, 0); }
+}
+
+.inclusion {
+    background: #e8f4fd;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.features-inclusion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.feature { padding: 1rem; }
+.feature-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+.feature h3 { color: #009639; margin-bottom: 0.5rem; }
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.footer-small {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+/* --- 8. Media Queries (Ajustements Écrans) --- */
 @media (max-width: 768px) {
     .grille-jeux {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
-    
     .carte-jeu {
         min-height: 280px;
         padding: 15px;
     }
-    
-    .emoji-jeu {
-        font-size: 3rem;
-    }
-    
-    .carte-jeu h3 {
-        font-size: 1.2rem;
-    }
+    .emoji-jeu { font-size: 3rem; }
+    .carte-jeu h3 { font-size: 1.2rem; }
+    main { padding: 1rem; }
 }
 
 @media (max-width: 480px) {
     .grille-jeux {
         grid-template-columns: 1fr;
     }
-}
-/* Donne un aspect "Application" au toucher */
-* {
-    -webkit-tap-highlight-color: transparent;
-    user-select: none; /* Empêche de copier le texte par erreur en jouant */
-}
-
-input, textarea {
-    user-select: text; /* Permet quand même d'écrire dans les champs si besoin */
-}
-
-body {
-    overscroll-behavior-y: contain; /* Empêche le "rebond" quand on tire vers le haut */
-}
-/* Rend les boutons réactifs comme une vraie application */
-button, .bouton, a {
-    touch-action: manipulation;
-}
-
-.ton-element-score {
-    display: inline-block;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    min-width: 100px;    /* Donne assez de place au texte */
-}
-
-.conteneur-etoiles {
-    display: flex;
-    flex-wrap: wrap;       /* Les étoiles passeront à la ligne si besoin */
-    justify-content: center;
-    gap: 10px;             /* Un petit espace entre chaque étoile */
-    width: 100%;           /* Prend toute la largeur disponible */
-    max-width: 300px;      /* Empêche de devenir trop large */
-    margin: 0 auto;        /* Centre le tout */
-    padding: 10px;
-}
-
-.etoile {
-    font-size: 2rem;       /* Ajuste la taille pour que ça tienne */
-    flex-shrink: 0;        /* Empêche les étoiles de s'écraser */
+    h1 { font-size: 1.5rem; }
+    header { padding: 1.5rem 1rem; }
 }

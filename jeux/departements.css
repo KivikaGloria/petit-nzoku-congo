@@ -1,26 +1,23 @@
-/* jeux/departements.css */
+/* departements/departements.css */
 
-.departements-container {
-    max-width: 1200px;
+.quiz-container {
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* En-tête */
-.departements-header {
+/* En-tête du quiz */
+.quiz-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: white;
-    padding: 15px 25px;
+    padding: 20px;
     border-radius: 15px;
     margin-bottom: 30px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     flex-wrap: wrap;
     gap: 15px;
-}
-.departement-highlight {
-    display: none !important;
 }
 
 .score-box {
@@ -31,85 +28,72 @@
     font-weight: bold;
 }
 
-.timer-box {
+.score-label {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.score-valeur {
+    font-size: 1.5rem;
+    background: white;
+    color: #009639;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 0 5px;
+}
+
+.score-max {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.etoiles-box {
+    font-size: 1.8rem;
+    color: #fbde4a;
+    letter-spacing: 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.question-number {
     background: #e3211c;
     color: white;
     padding: 10px 20px;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 1.2rem;
 }
 
-.niveau-box {
-    background: #fbde4a;
-    color: #333;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-}
-
-/* Zone de jeu principale */
-.jeu-principal {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-/* Carte */
-.carte-container {
-    position: relative;
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-.carte-congo {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.departement-highlight {
-    position: absolute;
-    border: 4px solid #e3211c;
-    background: rgba(227, 33, 28, 0.1);
-    border-radius: 10px;
-    pointer-events: none;
-    display: none;
-}
-
-/* Section quiz */
-.quiz-section {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
+/* Boîte de question */
 .question-box {
-    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     margin-bottom: 30px;
+    text-align: center;
+    border: 3px solid #fbde4a;
 }
 
 .question-box h2 {
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    text-align: center;
 }
 
-.nom-departement {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #009639;
-    background: #e8f4fd;
-    padding: 15px;
+.question-image {
+    margin-top: 20px;
+}
+
+.question-image img {
+    max-width: 300px;
+    max-height: 200px;
     border-radius: 10px;
-    display: inline-block;
+    border: 3px solid #009639;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* --- ZONE DES RÉPONSES AJUSTÉE --- */
-.reponses-departements {
+/* Zone des réponses */
+.reponses {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -117,128 +101,140 @@
 }
 
 .btn-reponse {
-    background: #ffffff;
-    /* On remplace la bordure grise par une ombre pour un look plus moderne */
-    border: 2px solid #edf2f7;
-    border-radius: 18px;
-    padding: 20px 15px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    text-align: center;
-    font-weight: 700;
-    color: #2d3748;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    position: relative;
-}
-
-/* Effet au survol */
-.btn-reponse:hover:not(:disabled) {
-    background: #fdfdfd;
-    border-color: #009639; /* Vert Congo */
-    color: #009639;
-    transform: translateY(-3px); /* Petit saut vers le haut plutôt que décalage latéral */
-    box-shadow: 0 8px 15px rgba(0, 150, 57, 0.1);
-}
-
-/* Effet quand on clique (enfoncement) */
-.btn-reponse:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* --- ÉTATS DE RÉPONSE --- */
-
-/* Bonne réponse */
-.btn-reponse.correct {
-    background: #009639 !important; /* Vert Congo */
-    border-color: #007a2e !important;
-    color: white !important;
-    box-shadow: 0 4px 12px rgba(0, 150, 57, 0.3);
-}
-
-/* Mauvaise réponse */
-.btn-reponse.incorrect {
-    background: #e3211c !important; /* Rouge Congo */
-    border-color: #b91a16 !important;
-    color: white !important;
-    box-shadow: 0 4px 12px rgba(227, 33, 28, 0.3);
-}
-
-/* Boutons désactivés après réponse */
-.btn-reponse:disabled {
-    cursor: not-allowed;
-    filter: grayscale(0.2);
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 600px) {
-    .reponses-departements {
-        grid-template-columns: 1fr; /* Une seule colonne sur petit écran */
-        gap: 10px;
-    }
-    
-    .btn-reponse {
-        padding: 15px;
-    }
-}
-/* Feedback */
-.feedback {
-    background: #fff3cd;
-    border: 3px solid #ffeeba;
+    background: #f8f8f8;
+    border: 3px solid #ddd;
     border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 30px;
-}
-
-#feedback-message {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-#feedback-message.bonne {
-    color: #155724;
-}
-
-#feedback-message.mauvaise {
-    color: #721c24;
-}
-
-.info-departement {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 4px solid #009639;
-}
-
-.info-departement p {
-    margin: 5px 0;
-    color: #333;
-}
-
-/* Contrôles */
-.controles {
+    padding: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+}
+
+.btn-reponse:hover:not(:disabled) {
+    background: #e8f4fd;
+    border-color: #009639;
+    transform: translateX(5px);
+}
+
+.btn-reponse.correct {
+    background: #4CAF50;
+    border-color: #2e7d32;
+    color: white;
+    animation: bravo 0.5s ease;
+}
+
+.btn-reponse.incorrect {
+    background: #f44336;
+    border-color: #c62828;
+    color: white;
+    animation: secousse 0.3s ease;
+}
+
+.btn-reponse:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.picto {
+    font-size: 2rem;
+}
+
+/* Animations */
+@keyframes bravo {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); background: #4CAF50; }
+    100% { transform: scale(1); }
+}
+
+@keyframes secousse {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Feedback Élégant */
+.feedback {
+    background: white;
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 30px 0;
+}
+
+.feedback-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
-    margin: 20px 0;
+}
+
+.feedback-badge {
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.feedback-badge.bonne { background: #4CAF50; color: white; }
+.feedback-badge.mauvaise { background: #f44336; color: white; }
+
+.feedback-explication {
+    background: #f8f9fa;
+    border-left: 4px solid #009639;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.explication-texte {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+}
+
+/* Bouton suivant */
+#btn-suivant {
+    display: block;
+    width: 250px;
+    margin: 20px auto;
+    font-size: 1.3rem;
+    padding: 15px 30px;
 }
 
 /* Options accessibilité */
 .options-accessibilite {
-    background: #f5f5f5;
+    background: #e8f4fd;
     border-radius: 15px;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.options-accessibilite h3 {
+    color: #009639;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
 }
 
 .option-grille {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
 .option {
@@ -251,6 +247,68 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.switch-label {
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.option-emoji { font-size: 1.3rem; }
+
+.bouton-icone {
+    background: #009639;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s;
+}
+
+.bouton-icone:hover { background: #007a2e; }
+
+.choix-nb-questions {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+}
+
+.choix-nb-questions p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.nb-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-nb {
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-nb:hover { background: #fbde4a; }
+.btn-nb.active { background: #009639; color: white; border-color: #007a2e; }
+
+/* Switch */
 .switch {
     position: relative;
     display: inline-block;
@@ -258,19 +316,12 @@
     height: 24px;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+.switch input { opacity: 0; width: 0; height: 0; }
 
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background-color: #ccc;
     border-radius: 24px;
     transition: 0.3s;
@@ -279,79 +330,60 @@
 .slider:before {
     position: absolute;
     content: "";
-    height: 20px;
-    width: 20px;
-    left: 2px;
-    bottom: 2px;
+    height: 20px; width: 20px; left: 2px; bottom: 2px;
     background-color: white;
     border-radius: 50%;
     transition: 0.3s;
 }
 
-input:checked + .slider {
-    background-color: #009639;
-}
+input:checked + .slider { background-color: #009639; }
+input:checked + .slider:before { transform: translateX(26px); }
 
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .jeu-principal {
-        grid-template-columns: 1fr;
-    }
-    
-    .reponses-departements {
-        grid-template-columns: 1fr;
-    }
-    
-    .departements-header {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-/* Le conteneur du score final */
-.score-final-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-/* LA BOITE ROUGE QUE TU DEMANDAIS */
-.boite-score-rouge {
-    background-color: #e3211c; /* Le rouge du drapeau */
-    color: white;              /* Texte en blanc pour le contraste */
-    font-size: 4rem;           /* Très gros */
-    font-weight: 900;
-    padding: 20px 40px;        /* Espacement interne pour créer le rectangle */
-    border-radius: 15px;       /* Coins légèrement arrondis */
-    display: inline-block;
-    box-shadow: 0 8px 0 #b31a16; /* Ombre foncée pour donner du relief */
-    line-height: 1;
-    margin-bottom: 10px;
-}
-
-/* Le petit badge jaune en dessous */
-.pourcentage-badge {
-    background: #fbde4a; /* Jaune Congo */
-    color: #333;
-    padding: 8px 20px;
-    border-radius: 50px;
+.message-signes {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background: #fbde4a;
+    border-radius: 10px;
     font-weight: bold;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 0 #d4bc3f;
 }
 
-/* Animation pour faire apparaître le tout */
-.resultats-final {
-    animation: bounceIn 0.8s ease;
+/* Écran Final de Résultats */
+.resultats {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
-@keyframes bounceIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    70% { transform: scale(1.05); }
-    100% { transform: scale(1); opacity: 1; }
+.resultats h2 { color: #009639; font-size: 2rem; margin-bottom: 20px; }
+
+.grand-score {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #e3211c;
+    text-shadow: 3px 3px 0 #fbde4a;
+    display: block;
+    margin: 20px 0;
+}
+
+.message-resultat {
+    font-size: 1.3rem;
+    margin: 30px 0;
+    line-height: 1.8;
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .reponses { grid-template-columns: 1fr; }
+    .quiz-header { flex-direction: column; text-align: center; }
+    .option-grille { flex-direction: column; align-items: stretch; }
+    .option { justify-content: space-between; }
+    .question-box h2 { font-size: 1.3rem; }
+}
+#explication, .explication-texte {
+    white-space: pre-line;
 }

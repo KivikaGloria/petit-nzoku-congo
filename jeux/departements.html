@@ -3,78 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les 15 départements - Petit Nzoku</title>
+    <title>Quiz Départements du Congo - Petit Nzoku</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="departements.css">
 </head>
 <body>
     <header>
-        <h1>🗺️ Les 15 départements du Congo</h1>
-        <p>Apprends la géographie de notre pays !</p>
+        <h1>🗺️ Défi des Départements du Congo</h1>
+        <p>Réponds à un maximum de questions en 60 secondes chrono !</p>
     </header>
 
     <main>
-        <div class="departements-container">
-            <!-- En-tête du jeu -->
-            <div class="departements-header">
+        <div class="quiz-container">
+            <div class="quiz-header">
                 <div class="score-box">
                     <span class="score-label">Score</span>
                     <span class="score-valeur" id="score">0</span>
-                    <span class="score-max" id="total-questions">15</span>
                 </div>
                 
-                <div class="timer-box" id="timer">
-                    ⏱️ <span id="temps">60</span>s
-                </div>
+                <div id="chrono-conteneur">⏱️ Temps restant : <span id="temps">15</span>s</div>
                 
-                <div class="niveau-box">
-                    Question <span id="question-actuelle">1</span>/15
+                <div class="etoiles-box" id="etoiles">
+                    </div>
+            </div>
+
+            <div class="barre-temps-container">
+                <div class="barre-temps-progressive" id="barre-temps"></div>
+            </div>
+
+            <div class="question-box">
+                <h2 id="question">Prêt pour le grand défi ?</h2>
+                
+                <div class="question-image" id="question-image">
+                    <img src="" alt="Carte du département" id="image-question" style="display: none;">
                 </div>
             </div>
 
-            <!-- Zone de jeu -->
-            <div class="jeu-principal">
-                <!-- Carte du Congo -->
-                <div class="carte-container">
-                    <img src="c:\Users\PC\Documents\petit nzokou\images\quiz\departement.jpg" alt="Carte du Congo" id="carte-congo" class="carte-congo">
-                    <div class="departement-highlight" id="highlight"></div>
+            <div class="reponses" id="reponses">
                 </div>
 
-                <!-- Question et réponses -->
-                <div class="quiz-section">
-                    <div class="question-box">
-                        <h2 id="question">Dans quel département se trouve ?</h2>
-                        <p id="nom-departement" class="nom-departement"></p>
+            <div class="feedback" id="feedback" style="display: none;">
+                <div class="feedback-content">
+                    <p id="feedback-message"></p>
+                    <div class="feedback-explication">
+                        <p id="explication" class="explication-texte"></p>
                     </div>
-
-                    <div class="reponses-departements" id="reponses">
-                        <!-- Les boutons seront générés par JS -->
-                    </div>
-
-                    <!-- Feedback -->
-                    <div class="feedback" id="feedback" style="display: none;">
-                        <p id="feedback-message"></p>
-                        <div class="info-departement" id="info-departement">
-                            <p id="chef-lieu"></p>
-                            <p id="superficie"></p>
-                            <p id="population"></p>
-                        </div>
-                    </div>
-
-                    <!-- Bouton suivant -->
-                    <button id="btn-suivant" class="bouton" style="display: none;">Question suivante</button>
                 </div>
             </div>
 
-            <!-- Contrôles -->
-            <div class="controles">
-                <button id="btn-recommencer" class="bouton">🔄 Recommencer</button>
-            </div>
+            <button id="btn-suivant" class="bouton" style="display: none;">Question suivante</button>
 
-            <!-- Options d'accessibilité -->
             <div class="options-accessibilite">
-                <h3>🖐️ Options</h3>
+                <h3>🌍 Options pour tous les enfants</h3>
+                
                 <div class="option-grille">
+                    <div class="option">
+                        <label class="switch-label">
+                            <span class="option-emoji">🖼️</span> Pictogrammes
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="mode-picto">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
                     <div class="option">
                         <label class="switch-label">
                             <span class="option-emoji">🔊</span> Sons
@@ -84,6 +76,16 @@
                             <span class="slider"></span>
                         </label>
                     </div>
+                    
+                    <div class="option">
+                        <button id="btn-lire" class="bouton-icone">
+                            <span class="option-emoji">🗣️</span> Lire la question
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="message-signes" id="message-signes">
+                    <p>🤟 Version langue des signes bientôt disponible</p>
                 </div>
             </div>
         </div>
