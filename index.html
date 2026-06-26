@@ -3,142 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petit Nzoku - Découvre le Congo-Brazzaville en jouant !</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#009639">
-    <link rel="stylesheet" href="style.css">
-    <style>
-    /* CORRECTION URGENTE POUR LA GRILLE */
-    .grille-jeux {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 20px !important;
-    }
-    
-    @media (max-width: 900px) {
-        .grille-jeux {
-            grid-template-columns: repeat(2, 1fr) !important;
-        }
-    }
-    
-    @media (max-width: 500px) {
-        .grille-jeux {
-            grid-template-columns: 1fr !important;
-        }
-    }
-    
-    .carte-jeu {
-        height: 100% !important;
-        min-height: 300px !important;
-    }
-</style>
+    <title>Quiz Congo-Brazzaville - Petit Nzoku</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
     <header>
-       <img src="images/quiz/elephant.jpg" alt="Logo Petit Nzoku" class="logo" onerror="this.src='https://via.placeholder.com/120?text=🐘'">
-        <h1>🐘 Petit Nzoku</h1>
-        <p class="slogan">Joue, apprends et découvre le Congo-Brazzaville !</p>
+        <h1>❓ Quiz du Congo-Brazzaville</h1>
+        <p>Trouve la bonne réponse et deviens incollable sur ton pays !</p>
     </header>
 
     <main>
-        <section class="presentation">
-            <h2>Bienvenue au pays des éléphants !</h2>
-            <p>Nzoku signifie <strong>"éléphant"</strong> dans nos langues. Comme cet animal majestueux, tu es fort et sage. Viens apprendre en t'amusant sur ton beau pays, le Congo-Brazzaville !</p>
-            <div class="drapeau">
-                <span class="vert"></span>
-                <span class="jaune"></span>
-                <span class="rouge"></span>
-            </div>
-        </section>
-
-      <section class="jeux" style="padding: 50px 10px; background-color: #f8f9fa;">
-    <h2 style="text-align: center; color: #333; margin-bottom: 40px; font-size: 2rem;">🎮 Nos jeux éducatifs</h2>
-    
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto;">
-        
-        <div style="flex: 1 1 240px; max-width: 300px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent; min-height: 380px;">
-            <div style="font-size: 4rem; margin-bottom: 15px;">🏆</div>
-            <h3 style="color: #e3211c; font-size: 1.3rem; margin-bottom: 10px;">Quiz du Congo</h3>
-            <p style="color: #555; margin-bottom: 15px; flex-grow: 1; font-size: 0.95rem;">Teste tes connaissances sur la culture et l'histoire de notre pays !</p>
-            <p style="color: #009639; font-size: 0.85rem; margin-bottom: 20px; padding: 8px; background: #f0f8ff; border-radius: 30px; font-weight: bold;">
-                🚩 30 questions · Culture · Nature
-            </p>
-            <a href="jeux/quiz.html" style="display: inline-block; background: #009639; color: white; padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; align-self: center; transition: 0.3s;">Jouer</a>
-        </div>
-        
-        <div style="flex: 1 1 240px; max-width: 300px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent; min-height: 380px;">
-            <div style="font-size: 4rem; margin-bottom: 15px;">🧠</div>
-            <h3 style="color: #e3211c; font-size: 1.3rem; margin-bottom: 10px;">Memory des animaux</h3>
-            <p style="color: #555; margin-bottom: 15px; flex-grow: 1; font-size: 0.95rem;">Retrouve les paires et découvre les animaux de nos forêts sauvages.</p>
-            <p style="color: #009639; font-size: 0.85rem; margin-bottom: 20px; padding: 8px; background: #f0f8ff; border-radius: 30px; font-weight: bold;">
-                🐘 4 niveaux · 10 animaux
-            </p>
-            <a href="jeux/memory-animaux.html" style="display: inline-block; background: #009639; color: white; padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; align-self: center;">Jouer</a>
-        </div>
-        
-        <div style="flex: 1 1 240px; max-width: 300px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent; min-height: 380px;">
-            <div style="font-size: 4rem; margin-bottom: 15px;">🌊</div>
-            <h3 style="color: #e3211c; font-size: 1.3rem; margin-bottom: 10px;">Nettoie le fleuve</h3>
-            <p style="color: #555; margin-bottom: 15px; flex-grow: 1; font-size: 0.95rem;">Deviens un héros de l'écologie en protégeant nos eaux précieuses.</p>
-            <p style="color: #009639; font-size: 0.85rem; margin-bottom: 20px; padding: 8px; background: #f0f8ff; border-radius: 30px; font-weight: bold;">
-                ♻️ Gestes écolos · Nature
-            </p>
-            <a href="jeux/nettoye-fleuve.html" style="display: inline-block; background: #009639; color: white; padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; align-self: center;">Jouer</a>
-        </div>
-        
-        <div style="flex: 1 1 240px; max-width: 300px; background: white; border-radius: 20px; padding: 25px 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; border: 2px solid transparent; min-height: 380px;">
-            <div style="font-size: 4rem; margin-bottom: 15px;">🗺️</div>
-            <h3 style="color: #e3211c; font-size: 1.3rem; margin-bottom: 10px;">Les 15 départements</h3>
-            <p style="color: #555; margin-bottom: 15px; flex-grow: 1; font-size: 0.95rem;">Apprends la géographie du Congo, les chefs-lieux et les superficies.</p>
-            <p style="color: #009639; font-size: 0.85rem; margin-bottom: 20px; padding: 8px; background: #f0f8ff; border-radius: 30px; font-weight: bold;">
-                📍 Chefs-lieux · Carte interactive
-            </p>
-            <a href="jeux/departements.html" style="display: inline-block; background: #009639; color: white; padding: 12px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: auto; align-self: center;">Jouer</a>
-        </div>
-        
-    </div>
-</section>
-
-
-
-        <section class="inclusion">
-            <h2>💛 Pour tous les enfants</h2>
-            <div class="features-inclusion">
-                <div class="feature">
-                    <span class="feature-emoji">🖼️</span>
-                    <h3>Pictogrammes</h3>
-                    <p>Pour les enfants qui ne lisent pas encore</p>
+        <div class="quiz-container">
+            <!-- En-tête du quiz -->
+            <div class="quiz-header">
+                <div class="score-box">
+                    <span class="score-label">Score</span>
+                    <span class="score-valeur" id="score">0</span>
+                    <span class="score-max" id="total-questions">10</span>
                 </div>
-                <div class="feature">
-                    <span class="feature-emoji">🤟</span>
-                    <h3>Langue des signes</h3>
-                    <p>Pour les enfants sourds (bientôt)</p>
+                
+                <div class="etoiles-box" id="etoiles">
+                    ★★★★★★★★★★
                 </div>
-                <div class="feature">
-                    <span class="feature-emoji">🔊</span>
-                    <h3>Sons et voix</h3>
-                    <p>Pour les enfants malvoyants</p>
-                </div>
-                <div class="feature">
-                    <span class="feature-emoji">📖</span>
-                    <h3>Explication</h3>
-                    <p>Apprends après chaque réponse</p>
+                
+                <div class="question-number">
+                    Question <span id="question-actuelle">1</span>/<span id="total-questions2">10</span>
                 </div>
             </div>
-        </section>
+
+            <!-- Question et image -->
+            <div class="question-box">
+                <h2 id="question">Quel est l'animal symbole du Congo-Brazzaville ?</h2>
+                
+                <div class="question-image" id="question-image">
+                    <img src="" alt="Image de la question" id="image-question" style="display: none;">
+                </div>
+            </div>
+
+            <!-- Réponses -->
+            <div class="reponses" id="reponses">
+                <!-- Généré par JavaScript -->
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback" id="feedback" style="display: none;">
+                <p id="feedback-message"></p>
+                <p id="explication" class="explication"></p>
+            </div>
+
+            <!-- Bouton suivant -->
+            <button id="btn-suivant" class="bouton" style="display: none;">Question suivante</button>
+
+            <!-- Options d'accessibilité -->
+            <div class="options-accessibilite">
+                <h3>🌍 Options pour tous les enfants</h3>
+                
+                <div class="option-grille">
+                    <div class="option">
+                        <label class="switch-label">
+                            <span class="option-emoji">🖼️</span> Pictogrammes
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="mode-picto">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <label class="switch-label">
+                            <span class="option-emoji">🔊</span> Sons
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="mode-son" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="option">
+                        <button id="btn-lire" class="bouton-icone">
+                            <span class="option-emoji">🗣️</span> Lire la question
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="choix-nb-questions">
+                    <p>Nombre de questions :</p>
+                    <div class="nb-buttons">
+                        <button class="btn-nb" data-nb="5">5</button>
+                        <button class="btn-nb active" data-nb="10">10</button>
+                        <button class="btn-nb" data-nb="15">15</button>
+                        <button class="btn-nb" data-nb="20">20</button>
+                        <button class="btn-nb" data-nb="30">30</button>
+                    </div>
+                </div>
+                
+                <div class="message-signes" id="message-signes">
+                    <p>🤟 Version langue des signes bientôt disponible</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>© 2026 Petit Nzoku - Éducation et culture du Congo-Brazzaville</p>
-        <p class="footer-small">🐘 "Nzoku" = éléphant - Symbole de sagesse et de force </p>
+        <a href="../index.html" class="bouton">← Retour à l'accueil</a>
     </footer>
 
-   <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
-            .then(() => console.log("Petit Nzoku est prêt à être installé !"))
-            .catch((err) => console.log("Erreur :", err));
-    }
-</script>
+    <script src="quiz.js"></script>
 </body>
 </html>
