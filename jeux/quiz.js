@@ -1,5 +1,3 @@
-// jeux/quiz.js - Version complète Congo-Brazzaville (30 questions)
-
 // =============================================
 // 🇨🇬 30 QUESTIONS SUR LE CONGO-BRAZZAVILLE
 // =============================================
@@ -8,8 +6,6 @@ const TOUTES_LES_QUESTIONS = [
     // ====================================
     // 🌍 GÉOGRAPHIE & TERRITOIRE (1-5)
     // ====================================
-    
-    // 1. Animal emblématique
     {
         question: "Quel est l'animal symbole du Congo-Brazzaville ?",
         options: ["L'éléphant", "Le lion", "Le léopard", "Le gorille"],
@@ -18,8 +14,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "elephant.jpg",
         pictos: ["🐘", "🦁", "🐆", "🦍"]
     },
-    
-    // 2. Capitale
     {
         question: "Quelle est la capitale de la République du Congo ?",
         options: ["Pointe-Noire", "Brazzaville", "Dolisie", "Ouesso"],
@@ -28,8 +22,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "brazzaville.jpg",
         pictos: ["🏖️", "🏛️", "🏘️", "🌲"]
     },
-    
-    // 3. Fleuve
     {
         question: "Quel grand fleuve traverse Brazzaville ?",
         options: ["Le Niger", "Le Congo", "Le Nil", "Le Zambèze"],
@@ -38,17 +30,14 @@ const TOUTES_LES_QUESTIONS = [
         image: "fleuve.jpg",
         pictos: ["🌊", "🌊", "🌊", "🌊"]
     },
-    
-    // 4. Départements
     {
-    question: "Combien de départements compte la République du Congo ?",
-    options: ["8", "10", "15", "14"],
-    correct: 2,
-    explication: "La République Congo compte 15 départements depuis la réforme de 2024 : Brazzaville, Pointe-Noire, Bouenza, Congo-Oubangui, Cuvette, Cuvette-Ouest, Djoué-Léfini, Kouilou, Lékoumou, Likouala, Niari, Nkéni-Alima, Plateaux, Pool, Sangha.",
-    image: "departement c.jpg",
-    pictos: ["8️⃣", "1️⃣0️⃣", "1️⃣5️⃣", "1️⃣4️⃣"] // ← 1️⃣5️⃣ au lieu de 1️⃣2️⃣
-},
-    // 5. Pointe-Noire
+        question: "Combien de départements compte la République du Congo ?",
+        options: ["8", "10", "15", "14"],
+        correct: 2,
+        explication: "La République Congo compte 15 départements depuis la réforme de 2024 : Brazzaville, Pointe-Noire, Bouenza, Congo-Oubangui, Cuvette, Cuvette-Ouest, Djoué-Léfini, Kouilou, Lékoumou, Likouala, Niari, Nkéni-Alima, Plateaux, Pool, Sangha.",
+        image: "departement c.jpg",
+        pictos: ["8️⃣", "1️⃣0️⃣", "1️⃣5️⃣", "1️⃣4️⃣"]
+    },
     {
         question: "Comment surnomme-t-on Pointe-Noire ?",
         options: ["La ville océane", "La perle du Pool", "La capitale du Niari", "La cité du rail"],
@@ -57,12 +46,9 @@ const TOUTES_LES_QUESTIONS = [
         image: "pointenoire.jpg",
         pictos: ["🌊", "🏙️", "🌆", "🏖️"]
     },
-    
     // ====================================
     // 🏛️ HISTOIRE & POLITIQUE (6-10)
     // ====================================
-    
-    // 6. Indépendance
     {
         question: "En quelle année la République Congo a-t-il obtenu son indépendance ?",
         options: ["1958", "1960", "1962", "1965"],
@@ -71,8 +57,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "independance.jpg",
         pictos: ["1️⃣9️⃣5️⃣8️⃣", "1️⃣9️⃣6️⃣0️⃣", "1️⃣9️⃣6️⃣2️⃣", "1️⃣9️⃣6️⃣5️⃣"]
     },
-    
-    // 7. Premier président
     {
         question: "Qui a été le premier président du Congo indépendant ?",
         options: ["Fulbert Youlou", "Marien Ngouabi", "Pascal Lissouba", "Denis Sassou Nguesso"],
@@ -81,8 +65,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "FulbertYoulou.jpeg",
         pictos: ["👨‍💼", "👨‍✈️", "👨‍🎓", "👨‍⚕️"]
     },
-    
-    // 8. Marien Ngouabi
     {
         question: "Qui a dirigé le Congo de 1969 à 1977 ?",
         options: ["Fulbert Youlou", "Marien Ngouabi", "Joachim Yhombi-Opango", "Denis Sassou Nguesso"],
@@ -91,8 +73,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "MarienNgouabi.jpg",
         pictos: ["👨‍✈️", "👨‍🎓", "👨‍💼", "👨‍⚖️"]
     },
-    
-    // 9. Fête nationale
     {
         question: "Quand célèbre-t-on la fête nationale au Congo ?",
         options: ["30 juin", "15 août", "14 juillet", "1er mai"],
@@ -101,8 +81,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "fetenationale.jpg",
         pictos: ["📅", "🎉", "🇨🇬", "🎊"]
     },
-    
-    // 10. Devise nationale
     {
         question: "Quelle est la devise de la République du Congo ?",
         options: ["Unité, Travail, Progrès", "Liberté, Égalité, Fraternité", "Justice, Paix, Travail", "Dieu, Patrie, Famille"],
@@ -111,12 +89,9 @@ const TOUTES_LES_QUESTIONS = [
         image: "devise.jpg",
         pictos: ["🤝", "🔨", "📈", "🇨🇬"]
     },
-    
     // ====================================
     // 🎵 CULTURE & MUSIQUE (11-15)
     // ====================================
-    
-    // 11. Danse traditionnelle
     {
         question: "Quelle danse est célèbre au Congo-Brazzaville ?",
         options: ["Le soukous", "Le ndombolo", "Le kuduro", "Le coupé-décalé"],
@@ -125,8 +100,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "sekous.jpg",
         pictos: ["💃", "🕺", "🎵", "🎶"]
     },
-    
-    // 12. Groupe légendaire
     {
         question: "Quel est le groupe mythique des années 60-70 au Congo ?",
         options: ["Les Bantous de la capitale", "OK Jazz", "Zaïko Langa-Langa", "Wenge Musica"],
@@ -135,8 +108,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "sekous.jpg",
         pictos: ["🎸", "🥁", "🎺", "🎤"]
     },
-    
-    // 13. Instrument traditionnel
     {
         question: "Comment s'appelle ce tambour traditionnel congolais ?",
         options: ["Le tam-tam", "Le lokole", "La sanza", "Le balafon"],
@@ -145,18 +116,14 @@ const TOUTES_LES_QUESTIONS = [
         image: "lokole.jpeg",
         pictos: ["🥁", "📯", "🎹", "🎸"]
     },
-    
-    // 14. Artiste célèbre
     {
-    question: "Quel chanteur congolais est connu pour 'Ancien combattant' ?",
-    options: ["Zao", "Tchico", "Les Bantous de la capitale", "Pamelo Mounk'a"],
-    correct: 0,
-    explication: "Zao, de son vrai nom Casimir Zoba, est un chanteur et percussionniste congolais. 'Ancien combattant' est l'une de ses chansons les plus célèbres !",
-    image: "zao.jpg",
-    pictos: ["👨‍🎤", "🎤", "🥁", "🎵"]
-},
-    
-    // 15. Festival
+        question: "Quel singer congolais est connu pour 'Ancien combattant' ?",
+        options: ["Zao", "Tchico", "Les Bantous de la capitale", "Pamelo Mounk'a"],
+        correct: 0,
+        explication: "Zao, de son vrai nom Casimir Zoba, est un chanteur et percussionniste congolais. 'Ancien combattant' est l'une de ses chansons les plus célèbres !",
+        image: "zao.jpg",
+        pictos: ["👨‍🎤", "🎤", "🥁", "🎵"]
+    },
     {
         question: "Quel grand festival a lieu tous les deux ans à Brazzaville ?",
         options: ["FESPAM", "FESPACO", "FEMUA", "FIMU"],
@@ -165,12 +132,9 @@ const TOUTES_LES_QUESTIONS = [
         image: "fespam.jpg",
         pictos: ["🎪", "🎭", "🎨", "🌍"]
     },
-    
     // ====================================
     // 🍲 GASTRONOMIE (16-20)
     // ====================================
-    
-    // 16. Plat typique
     {
         question: "Quel est un plat traditionnel congolais ?",
         options: ["Le saka-saka", "Le thiéboudienne", "L'attiéké", "Le jollof"],
@@ -179,8 +143,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "sakasaka.jpg",
         pictos: ["🍲", "🍛", "🍚", "🍜"]
     },
-    
-    // 17. Manioc
     {
         question: "Comment appelle-t-on la pâte de manioc au Congo ?",
         options: ["Le foufou", "La chikwangue", "L'attiéké", "Le gari"],
@@ -189,8 +151,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "manioc.jpg",
         pictos: ["🍞", "🥖", "🍠", "🌽"]
     },
-    
-    // 18. Poisson
     {
         question: "Quel poisson est très consommé au Congo ?",
         options: ["Le capitaine", "La carpe", "Le tilapia", "Le mbenga"],
@@ -199,8 +159,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "capiatine.jpg",
         pictos: ["🐟", "🐠", "🐡", "🎣"]
     },
-    
-    // 19. Fruit tropical
     {
         question: "Quel fruit est très cultivé au Congo ?",
         options: ["La mangue", "La pomme", "La poire", "La cerise"],
@@ -209,8 +167,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "mangue.jpg",
         pictos: ["🥭", "🍎", "🍐", "🍒"]
     },
-    
-    // 20. Boisson
     {
         question: "Quelle est la boisson traditionnelle fermentée au Congo ?",
         options: ["Le vin de palme", "La bière", "Le jus d'orange", "Le thé"],
@@ -219,12 +175,9 @@ const TOUTES_LES_QUESTIONS = [
         image: "vinpalme.jpg",
         pictos: ["🥥", "🍺", "🧃", "☕"]
     },
-    
     // ====================================
     // 🌳 NATURE & ENVIRONNEMENT (21-25)
     // ====================================
-    
-    // 21. Parc national
     {
         question: "Quel est le parc national le plus célèbre du Congo ?",
         options: ["Odzala-Kokoua", "Virunga", "Niokolo-Koba", "Taï"],
@@ -233,8 +186,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "ozala.jpg",
         pictos: ["🏞️", "🌳", "🦍", "🐘"]
     },
-    
-    // 22. Gorilles
     {
         question: "Quelle espèce de gorille vit au Congo ?",
         options: ["Gorille des plaines de l'Ouest", "Gorille des montagnes", "Gorille de l'Est", "Gorille de Cross River"],
@@ -243,18 +194,14 @@ const TOUTES_LES_QUESTIONS = [
         image: "gorille.jpg",
         pictos: ["🦍", "🦧", "🐒", "🙈"]
     },
-    
-    // 23. Arbre géant
     {
         question: "Quel grand arbre trouve-t-on dans la forêt congolaise ?",
         options: ["Le fromager", "Le baobab", "L'acacia", "L'eucalyptus"],
         correct: 0,
-        explication: "Le fromager (ou fromager) peut atteindre 60 mètres de haut ! Son bois léger sert à fabriquer des pirogues.",
+        explication: "Le fromager peut atteindre 60 mètres de haut ! Son bois léger sert à fabriquer des pirogues.",
         image: "fromager.jpeg",
         pictos: ["🌳", "🌲", "🌴", "🌵"]
     },
-    
-    // 24. Forêt
     {
         question: "Comment s'appelle la grande forêt du Congo ?",
         options: ["Forêt du Bassin du Congo", "Forêt amazonienne", "Forêt de Taï", "Forêt du Mayombe"],
@@ -263,8 +210,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "foret.jpg",
         pictos: ["🌳", "🌍", "💚", "🌲"]
     },
-    
-    // 25. Animal menacé
     {
         question: "Quel animal est menacé d'extinction au Congo ?",
         options: ["Le pangolin", "Le rat", "La souris", "Le chacal"],
@@ -273,12 +218,9 @@ const TOUTES_LES_QUESTIONS = [
         image: "pangolin.jpg",
         pictos: ["🦔", "🐭", "🐀", "🐺"]
     },
-    
     // ====================================
     // 🗣️ LANGUES & SOCIÉTÉ (26-30)
     // ====================================
-    
-    // 26. Langues nationales
     {
         question: "Quelles sont les deux langues nationales du Congo ?",
         options: ["Lingala et kituba", "Français et lingala", "lari et lingala", "Français et Téké"],
@@ -287,8 +229,6 @@ const TOUTES_LES_QUESTIONS = [
         image: "Langue.jpeg",
         pictos: ["🗣️", "🇨🇬", "📚", "🎓"]
     },
-    
-    // 27. Salutation en lingala
     {
         question: "Comment dit-on 'Bonjour' en lingala ?",
         options: ["Mbote", "Sango", "Kwele", "Molo"],
@@ -297,28 +237,22 @@ const TOUTES_LES_QUESTIONS = [
         image: "Langue.jpeg",
         pictos: ["👋", "🗣️", "🇨🇬", "☀️"]
     },
-    
-    // 28. Salutation en kituba
     {
-        question: "Comment dit-on 'Comment va tu ?' en kituba ?",
+        question: "Comment dit-on 'Comment vas-tu ?' en kituba ?",
         options: ["Wafasso?", "Mbote?", "Boni?", "Malamu?"],
         correct: 0,
         explication: "En kituba, on demande 'Wafasso?' pour dire 'Comment ça va ?'. On répond 'Mu ke mbote' (Je vais bien).",
         image: "Langue.jpeg",
         pictos: ["❓", "👋", "🗣️", "👍"]
     },
-    
-    // 29. sapologie
-   {
-    question: "Comment appelle-t-on l'art de bien s'habiller au Congo ?",
-    options: ["La sapologie", "La mode", "Le stylisme", "La couture"],
-    correct: 0,
-    explication: "La sapologie est un mouvement culturel et esthétique né au Congo. Les 'sapeurs' sont célèbres pour leur élégance et leurs tenues colorées !",
-    image: "sapeur.jpg",
-    pictos: ["🕴️", "👔", "👖", "👞"]
-},
-    
-    // 30. Pagne
+    {
+        question: "Comment appelle-t-on l'art de bien s'habiller au Congo ?",
+        options: ["La sapologie", "La mode", "Le stylisme", "La couture"],
+        correct: 0,
+        explication: "La sapologie est un mouvement culturel et esthétique né au Congo. Les 'sapeurs' sont célèbres pour leur élégance et leurs tenues colorées !",
+        image: "sapeur.jpg",
+        pictos: ["🕴️", "👔", "👖", "👞"]
+    },
     {
         question: "Comment appelle-t-on le tissu africain très porté au Congo ?",
         options: ["Le pagne", "Le wax", "Le bogolan", "Le kente"],
@@ -333,7 +267,6 @@ const TOUTES_LES_QUESTIONS = [
 // 🎮 LOGIQUE DU JEU
 // =============================================
 
-// Variables globales
 let questions = [];
 let questionActuelle = 0;
 let score = 0;
@@ -344,7 +277,6 @@ let sonActive = true;
 const questionEl = document.getElementById('question');
 const reponsesEl = document.getElementById('reponses');
 const feedbackEl = document.getElementById('feedback');
-const feedbackMessage = document.getElementById('feedback-message');
 const explicationEl = document.getElementById('explication');
 const btnSuivant = document.getElementById('btn-suivant');
 const scoreEl = document.getElementById('score');
@@ -356,120 +288,58 @@ const modePictoCheckbox = document.getElementById('mode-picto');
 const modeSonCheckbox = document.getElementById('mode-son');
 const btnLire = document.getElementById('btn-lire');
 
-// Sons
-const sons = {
-    correct: null,
-    incorrect: null,
-    bravo: null
-};
-
-
-
+const sons = { correct: null, incorrect: null, bravo: null };
 
 // =============================================
-// 🎵 FONCTIONS AUDIO
+// 🎵 FONCTIONS AUDIO (SÉCURISÉES)
 // =============================================
-
 function initSons() {
     try {
-        sons.correct = new Audio('c:\Users\PC\Documents\petit nzokou\sons\correct.mp3');
-        sons.incorrect = new Audio('c:\Users\PC\Documents\petit nzokou\sons\incorrect.mp3');
-        sons.bravo = new Audio('c:\Users\PC\Documents\petit nzokou\sons\bravo.mp3');  // ← chemin corrigé !
+        sons.correct = new Audio('../sons/correct.mp3');
+        sons.correct.onerror = () => { sons.correct = new Audio('../sons/correct.wav'); };
+        
+        sons.incorrect = new Audio('../sons/incorrect.mp3');
+        sons.incorrect.onerror = () => { sons.incorrect = new Audio('../sons/incorrect.wav'); };
+        
+        sons.bravo = new Audio('../sons/bravo.mp3');
+        sons.bravo.onerror = () => { sons.bravo = new Audio('../sons/bravo.wav'); };
     } catch (e) {
-        console.log("Sons non disponibles");
+        console.log("Système audio non disponible :", e);
     }
 }
 
 function jouerSon(type) {
     if (!sonActive) return;
     if (sons[type]) {
-        sons[type].play().catch(e => console.log("Erreur son:", e));
+        sons[type].play().catch(e => console.log("Lecture du son bloquée ou impossible:", e));
     }
 }
 
-// Initialiser les sons
-initSons();
-
-
-// Pour tester (optionnel)
-// jouerSon('correct'); // Test immédiat
-
-
-
-// 🔧 DIAGNOSTIC DES SONS
-function testerSons() {
-    console.log("🔊 Test des sons...");
-    
-    // Vérifier si les sons sont chargés
-    console.log("Son correct:", sons.correct);
-    console.log("Son incorrect:", sons.incorrect);
-    console.log("Son bravo:", sons.bravo);
-    
-    // Tester chaque son
-    setTimeout(() => {
-        console.log("Test son correct...");
-        sons.correct.play().catch(e => console.log("❌ Erreur correct:", e));
-    }, 1000);
-    
-    setTimeout(() => {
-        console.log("Test son incorrect...");
-        sons.incorrect.play().catch(e => console.log("❌ Erreur incorrect:", e));
-    }, 2000);
-    
-    setTimeout(() => {
-        console.log("Test son bravo...");
-        sons.bravo.play().catch(e => console.log("❌ Erreur bravo:", e));
-    }, 3000);
-}
-
-// Appelle la fonction après l'initialisation
-// Modifie initSons() pour accepter plusieurs formats
-function initSons() {
-    try {
-        // Essaie plusieurs formats
-        sons.correct = new Audio('../sons/correct.mp3');
-        sons.correct.onerror = () => {
-            console.log("MP3 ne marche pas, essaie WAV");
-            sons.correct = new Audio('../sons/correct.wav');
-        };
-        
-        sons.incorrect = new Audio('../sons/incorrect.mp3');
-        sons.incorrect.onerror = () => {
-            sons.incorrect = new Audio('../sons/incorrect.wav');
-        };
-        
-        sons.bravo = new Audio('../sons/bravo.mp3');
-        sons.bravo.onerror = () => {
-            sons.bravo = new Audio('../sons/bravo.wav');
-        };
-    } catch (e) {
-        console.log("Erreur sons:", e);
-    }
-}
-
-
+// =============================================
+// 🎲 MOTEUR DE SÉLECTION
+// =============================================
 function selectionnerQuestions(nbQuestions = 10) {
-    // 1. On crée une copie de toutes les questions
+    // On prend une copie neuve et propre à chaque fois
     let stock = [...TOUTES_LES_QUESTIONS];
 
-    // 2. Mélange complet (Fisher-Yates)
+    // Mélange de Fisher-Yates (ultra efficace)
     for (let i = stock.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [stock[i], stock[j]] = [stock[j], stock[i]];
     }
 
-    // 3. On retourne le nombre demandé
+    // On ne prend strictly que le nombre demandé
     return stock.slice(0, nbQuestions);
 }
+
 function changerNbQuestions(nb) {
     questions = selectionnerQuestions(nb);
     questionActuelle = 0;
     score = 0;
     mettreAJourScore();
-    totalQuestionsEls.forEach(el => el.textContent = nb);
+    totalQuestionsEls.forEach(el => { if(el) el.textContent = nb; });
     afficherQuestion();
     
-    // Mettre à jour les boutons actifs
     document.querySelectorAll('.btn-nb').forEach(btn => {
         if (btn.dataset.nb == nb) {
             btn.classList.add('active');
@@ -480,54 +350,44 @@ function changerNbQuestions(nb) {
 }
 
 // =============================================
-// 🎨 AFFICHAGE
+// 🎨 AFFICHAGE & RENDU
 // =============================================
 function afficherQuestion() {
-    // AJOUTE CETTE LIGNE ICI :
     window.scrollTo(0, 0); 
     
     const q = questions[questionActuelle];
+    if (questionActuelleEl) questionActuelleEl.textContent = questionActuelle + 1;
+    if (questionEl) questionEl.textContent = q.question;
     
-    questionActuelleEl.textContent = questionActuelle + 1;
-    questionEl.textContent = q.question;
+    if (imageQuestion) imageQuestion.style.display = 'none';
     
+    if (reponsesEl) {
+        reponsesEl.innerHTML = '';
+        q.options.forEach((option, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-reponse';
+            
+            if (modePicto && q.pictos && q.pictos[index]) {
+                btn.innerHTML = `<span class="picto">${q.pictos[index]}</span> ${option}`;
+            } else {
+                btn.textContent = option;
+            }
+            
+            btn.dataset.index = index;
+            btn.addEventListener('click', () => verifierReponse(index));
+            reponsesEl.appendChild(btn);
+        });
+    }
     
-    // 🚫 NE PLUS AFFICHER L'IMAGE ICI
-    // On la cache complètement
-    imageQuestion.style.display = 'none';
-    
-    // Générer les boutons (comme avant)
-    reponsesEl.innerHTML = '';
-    q.options.forEach((option, index) => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-reponse';
-        
-        if (modePicto && q.pictos && q.pictos[index]) {
-            btn.innerHTML = `<span class="picto">${q.pictos[index]}</span> ${option}`;
-        } else {
-            btn.textContent = option;
-        }
-        
-        btn.dataset.index = index;
-        btn.addEventListener('click', () => verifierReponse(index));
-        reponsesEl.appendChild(btn);
-    });
-    
-    feedbackEl.style.display = 'none';
-    btnSuivant.style.display = 'none';
+    if (feedbackEl) feedbackEl.style.display = 'none';
+    if (btnSuivant) btnSuivant.style.display = 'none';
 }
 
-// =============================================
-// ✅ VÉRIFICATION DES RÉPONSES
-// =============================================
-
-// ✅ VERSION ÉLÉGANTE ET ÉPURÉE
 function verifierReponse(index) {
     const q = questions[questionActuelle];
     const boutons = document.querySelectorAll('.btn-reponse');
     
     boutons.forEach(btn => btn.disabled = true);
-    
     boutons[q.correct].classList.add('correct');
     
     let feedbackHTML = '';
@@ -543,7 +403,6 @@ function verifierReponse(index) {
         jouerSon('incorrect');
     }
     
-    // Ajouter l'image si elle existe
     if (q.image) {
         feedbackHTML = `
             <div class="feedback-image-container">
@@ -552,36 +411,31 @@ function verifierReponse(index) {
         `;
     }
     
-    // Construire un feedback élégant
-    feedbackEl.innerHTML = `
-        <div class="feedback-content">
-            <div class="feedback-badge ${resultatClass}">
-                ${index === q.correct ? '✓ Bonne réponse' : '✗ Mauvaise réponse'}
+    if (feedbackEl) {
+        feedbackEl.innerHTML = `
+            <div class="feedback-content">
+                <div class="feedback-badge ${resultatClass}">
+                    ${index === q.correct ? '✓ Bonne réponse' : '✗ Mauvaise réponse'}
+                </div>
+                ${feedbackHTML}
+                <div class="feedback-explication">
+                    <p class="explication-texte">${q.explication}</p>
+                </div>
             </div>
-            
-            ${feedbackHTML}
-            
-            <div class="feedback-explication">
-                <p class="explication-texte">${q.explication}</p>
-            </div>
-        </div>
-    `;
+        `;
+        feedbackEl.style.display = 'block';
+        feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     
-    feedbackEl.style.display = 'block';
-    btnSuivant.style.display = 'block';
+    if (btnSuivant) {
+        btnSuivant.style.display = 'block';
+        if (questionActuelle === questions.length - 1) {
+            btnSuivant.textContent = 'Voir les résultats';
+        }
+    }
     
     mettreAJourScore();
-   
-    feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-   
-    if (questionActuelle === questions.length - 1) {
-        btnSuivant.textContent = 'Voir les résultats';
-    }
 }
-
-// =============================================
-// ➡️ QUESTION SUIVANTE
-// =============================================
 
 function questionSuivante() {
     if (questionActuelle < questions.length - 1) {
@@ -593,9 +447,8 @@ function questionSuivante() {
 }
 
 // =============================================
-// 🏆 RÉSULTATS
+// 🏆 RÉSULTATS & RECOMPENSES
 // =============================================
-
 function getMessageFelicitations(score, total) {
     const pourcentage = (score / total) * 100;
     const nomEnfant = "petit Nzoku";
@@ -615,52 +468,40 @@ function getMessageFelicitations(score, total) {
 
 function afficherResultats() {
     const total = questions.length;
-    const pourcentage = Math.round((score / total) * 100);
     let message = getMessageFelicitations(score, total);
     
-    // On calcule le palier suivant : 5 -> 10 -> 15...
     let prochainNiveau = total + 5;
     if (prochainNiveau > 30) prochainNiveau = 5;
 
     const container = document.querySelector('.quiz-container');
-    
-    container.innerHTML = `
-        <div class="resultats" id="resultats-final">
-            <h2>🏆 Quiz terminé !</h2>
-            <div class="grand-score">${score}/${total}</div>
-            <p class="message-resultat">${message}</p>
-            
-            <div class="drapeau" style="margin: 20px 0;">
-                <span class="vert"></span>
-                <span class="jaune"></span>
-                <span class="rouge"></span>
+    if (container) {
+        container.innerHTML = `
+            <div class="resultats" id="resultats-final">
+                <h2>🏆 Quiz terminé !</h2>
+                <div class="grand-score">${score}/${total}</div>
+                <p class="message-resultat">${message}</p>
+                <div class="drapeau" style="margin: 20px 0;">
+                    <span class="vert"></span>
+                    <span class="jaune"></span>
+                    <span class="rouge"></span>
+                </div>
+                <button onclick="window.location.search = '?n=' + ${prochainNiveau};" class="bouton">
+                    🔁 Rejouer
+                </button>
+                <a href="../index.html" class="bouton">🏠 Accueil</a>
             </div>
-            
-            <button onclick="window.location.search = '?n=' + ${prochainNiveau};" class="bouton">
-                🔁 Rejouer
-            </button>
-            
-            <a href="../index.html" class="bouton">🏠 Accueil</a>
-        </div>
-    `;
-
-    document.getElementById('resultats-final').scrollIntoView({ behavior: 'smooth' });
+        `;
+        jouerSon('bravo');
+        document.getElementById('resultats-final').scrollIntoView({ behavior: 'smooth' });
+    }
 }
-
-// =============================================
-// 📊 MISE À JOUR SCORE
-// =============================================
 
 function mettreAJourScore() {
     if (scoreEl) scoreEl.textContent = score;
     
     if (etoilesEl) {
-        // Au lieu d'afficher 30 étoiles qui dépassent du cadre
-        // On affiche : ⭐ 5 / 10
         const total = questions.length;
         etoilesEl.innerHTML = `<span style="color: #f1c40f;">⭐</span> ${score} / ${total}`;
-        
-        // On peut aussi ajouter une petite animation de saut quand le score change
         etoilesEl.style.transform = "scale(1.2)";
         setTimeout(() => etoilesEl.style.transform = "scale(1)", 200);
     }
@@ -669,7 +510,6 @@ function mettreAJourScore() {
 // =============================================
 // 🔊 SYNTHÈSE VOCALE
 // =============================================
-
 function lireQuestion() {
     if ('speechSynthesis' in window) {
         const q = questions[questionActuelle];
@@ -686,9 +526,11 @@ function lireQuestion() {
 }
 
 // =============================================
-// 🚀 INITIALISATION
+// 🚀 INITIALISATION & LISTENERS
 // =============================================
-
+// =============================================
+// 🚀 INITIALISATION & LISTENERS (VERSION CORRIGÉE)
+// =============================================
 function initQuiz() {
     initSons();
     
@@ -696,22 +538,52 @@ function initQuiz() {
     const urlParams = new URLSearchParams(window.location.search);
     const niveauURL = urlParams.get('n');
     
-    // 2. Si un chiffre existe, on le prend. Sinon, on commence à 5.
-    let nbACharger = niveauURL ? parseInt(niveauURL) : 5;
+    // 2. Si aucun chiffre dans l'URL, on prend 10 par défaut
+    let nbACharger = niveauURL ? parseInt(niveauURL) : 10;
     
-    // 3. Sécurité : on s'assure que c'est bien un nombre entre 5 et 30
+    // Sécurité sur les chiffres
     if (isNaN(nbACharger) || nbACharger < 5) nbACharger = 5;
     if (nbACharger > 30) nbACharger = 30;
     
-    // 4. On lance le jeu
-    changerNbQuestions(nbACharger);
+    // 3. On pioche le lot de questions UNIQUE pour toute la partie
+    questions = selectionnerQuestions(nbACharger);
+    questionActuelle = 0;
+    score = 0;
+    
+    // 4. On met à jour les textes et les boutons actifs graphiquement
+    mettreAJourScore();
+    totalQuestionsEls.forEach(el => { if(el) el.textContent = nbACharger; });
+    
+    document.querySelectorAll('.btn-nb').forEach(btn => {
+        if (parseInt(btn.dataset.nb) === nbACharger) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // 5. On affiche enfin la première question
+    afficherQuestion();
 }
 
-// Event listeners
-modePictoCheckbox.addEventListener('change', (e) => {
-    modePicto = e.target.checked;
-    afficherQuestion();
+// --- ÉCOUTEURS D'ÉVÉNEMENTS SÉCURISÉS ---
+
+// Évènement pour les boutons de changement de quantité (5, 10, 15...)
+// Au lieu de tout mélanger en plein milieu, on recharge proprement la page avec le nouveau paramètre !
+document.querySelectorAll('.btn-nb').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const nouveauNb = e.target.dataset.nb;
+        // On recharge la page proprement, ce qui va créer un TOUT NOUVEAU mélange sans doublon
+        window.location.search = '?n=' + nouveauNb;
+    });
 });
+
+if (modePictoCheckbox) {
+    modePictoCheckbox.addEventListener('change', (e) => {
+        modePicto = e.target.checked;
+        afficherQuestion();
+    });
+}
 
 if (modeSonCheckbox) {
     modeSonCheckbox.addEventListener('change', (e) => {
@@ -719,11 +591,29 @@ if (modeSonCheckbox) {
     });
 }
 
-if (btnLire) {
-    btnLire.addEventListener('click', lireQuestion);
+if (btnLire) btnLire.addEventListener('click', lireQuestion);
+if (btnSuivant) btnSuivant.addEventListener('click', questionSuivante);
+
+// Un seul et unique démarrage au chargement de l'écran
+document.addEventListener('DOMContentLoaded', initQuiz);
+
+
+// Événements sécurisés (ne plantent pas si l'élément HTML est absent)
+if (modePictoCheckbox) {
+    modePictoCheckbox.addEventListener('change', (e) => {
+        modePicto = e.target.checked;
+        afficherQuestion();
+    });
 }
 
-btnSuivant.addEventListener('click', questionSuivante);
+if (modeSonCheckbox) {
+    modeSonCheckbox.addEventListener('change', (e) => {
+        sonActive = e.target.checked;
+    });
+}
 
-// Démarrer
+if (btnLire) btnLire.addEventListener('click', lireQuestion);
+if (btnSuivant) btnSuivant.addEventListener('click', questionSuivante);
+
+// Démarrage automatique
 initQuiz();
