@@ -2,20 +2,19 @@ const CACHE_NAME = 'nzoku-cache-v2';
 
 // Liste de tous les fichiers à sauvegarder pour le mode hors-ligne
 const ASSETS = [
-  './',
-  './index.html',
-  './style.css',
-  './manifest.json',
-  './logo-192.png',
-  './logo-512.png',
-  './jeux/quiz.html',
-  './jeux/quiz.css',
-  './jeux/quiz.js',
-  './sons/correct.mp3',
-  './sons/incorrect.mp3',
-  './sons/bravo.mp3'
+  '',
+  'index.html',
+  'style.css',
+  'manifest.json',
+  'logo-192.png',
+  'logo-512.png',
+  'jeux/quiz.html',
+  'jeux/quiz.css',
+  'jeux/quiz.js',
+  'sons/correct.mp3',
+  'sons/incorrect.mp3',
+  'sons/bravo.mp3'
 ];
-
 // 1. Installation : On met tous les outils en mémoire cache
 self.addEventListener('install', (e) => {
   e.waitUntil(
