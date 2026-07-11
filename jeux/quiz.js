@@ -415,12 +415,13 @@ function verifierReponse(index) {
         btnSuivant.style.display = 'block';
         if (questionActuelle === questions.length - 1) {
             btnSuivant.textContent = 'Voir les résultats';
+        } else {
+            btnSuivant.textContent = 'Question suivante'; // 👈 Remis à l'état d'origine ici aussi !
         }
     }
     
     mettreAJourScore();
 }
-
 function questionSuivante() {
     if (questionActuelle < questions.length - 1) {
         questionActuelle++;
