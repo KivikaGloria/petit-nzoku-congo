@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nzoku-cache-v4'; // Nouvelle version !
+const CACHE_NAME = 'nzoku-cache-v6'; // 
 
 const ASSETS = [
   '',
