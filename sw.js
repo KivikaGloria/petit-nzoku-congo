@@ -1,6 +1,5 @@
-const CACHE_NAME = 'nzoku-cache-v2';
+const CACHE_NAME = 'nzoku-cache-v4'; // Nouvelle version !
 
-// Liste de tous les fichiers à sauvegarder pour le mode hors-ligne
 const ASSETS = [
   '',
   'index.html',
@@ -13,7 +12,36 @@ const ASSETS = [
   'jeux/quiz.js',
   'sons/correct.mp3',
   'sons/incorrect.mp3',
-  'sons/bravo.mp3'
+  'sons/bravo.mp3',
+  
+  // ⚠️ CHEMINS EXACTS DE TES IMAGES EN CACHE :
+  'images/quiz/elephant.jpg',
+  'images/quiz/brazzaville.jpg',
+  'images/quiz/fleuve.jpg',
+  'images/quiz/departement c.jpg',
+  'images/quiz/pointenoire.jpg',
+  'images/quiz/independance.jpg',
+  'images/quiz/FulbertYoulou.jpeg',
+  'images/quiz/MarienNgouabi.jpg',
+  'images/quiz/fetenationale.jpg',
+  'images/quiz/devise.jpg',
+  'images/quiz/sekous.jpg',
+  'images/quiz/lokole.jpeg',
+  'images/quiz/zao.jpg',
+  'images/quiz/fespam.jpg',
+  'images/quiz/sakasaka.jpg',
+  'images/quiz/manioc.jpg',
+  'images/quiz/chinchard.jpg',
+  'images/quiz/mangue.jpg',
+  'images/quiz/vinpalme.jpg',
+  'images/quiz/ozala.jpg',
+  'images/quiz/gorille.jpg',
+  'images/quiz/fromager.jpeg',
+  'images/quiz/foret.jpg',
+  'images/quiz/pangolin.jpg',
+  'images/quiz/Langue.jpeg',
+  'images/quiz/sapeur.jpg',
+  'images/quiz/pagne.jpeg'
 ];
 // 1. Installation : On met tous les outils en mémoire cache
 self.addEventListener('install', (e) => {
