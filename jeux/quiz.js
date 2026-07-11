@@ -156,7 +156,7 @@ const TOUTES_LES_QUESTIONS = [
         options: ["Le Chinchard", "La carpe", "Le tilapia", "Le mbenga"],
         correct: 0,
         explication: "Le Chinchard (communément appelé Moseka) : Très prisé pour sa chair tendre, il est très consommé frit, sauté ou braisé.",
-        image: "capiatine.jpg",
+        image: "chinchard.jpg",
         pictos: ["🐟", "🐠", "🐡", "🎣"]
     },
     {
