@@ -263,9 +263,6 @@ const TOUTES_LES_QUESTIONS = [
     }
 ];
 
-// =============================================
-// 🎮 LOGIQUE DU JEU
-// =============================================
 
 // =============================================
 // 🎮 LOGIQUE DU JEU (CORRIGÉE)
@@ -364,12 +361,12 @@ function afficherQuestion() {
     }
     
     if (feedbackEl) feedbackEl.style.display = 'none';
+    
     if (btnSuivant) {
         btnSuivant.style.display = 'none';
-        btnSuivant.textContent = 'Question suivante ➔'; // Reset du texte
+        btnSuivant.textContent = 'Question suivante'; // 👈 Remis comme avant, sans la flèche !
     }
 }
-
 function verifierReponse(index) {
     const q = questions[questionActuelle];
     const boutons = document.querySelectorAll('.btn-reponse');
