@@ -153,9 +153,9 @@ const TOUTES_LES_QUESTIONS = [
     },
     {
         question: "Quel poisson est très consommé au Congo ?",
-        options: ["Le capitaine", "La carpe", "Le tilapia", "Le mbenga"],
+        options: ["Le Chinchard", "La carpe", "Le tilapia", "Le mbenga"],
         correct: 0,
-        explication: "Le capitaine (ou poisson-chat) est très apprécié, surtout le 'liboke' (cuit à l'étouffée dans des feuilles).",
+        explication: "Le Chinchard (communément appelé Moseka) : Très prisé pour sa chair tendre, il est très consommé frit, sauté ou braisé.",
         image: "capiatine.jpg",
         pictos: ["🐟", "🐠", "🐡", "🎣"]
     },
@@ -267,6 +267,10 @@ const TOUTES_LES_QUESTIONS = [
 // 🎮 LOGIQUE DU JEU
 // =============================================
 
+// =============================================
+// 🎮 LOGIQUE DU JEU (CORRIGÉE)
+// =============================================
+
 let questions = [];
 let questionActuelle = 0;
 let score = 0;
@@ -277,7 +281,6 @@ let sonActive = true;
 const questionEl = document.getElementById('question');
 const reponsesEl = document.getElementById('reponses');
 const feedbackEl = document.getElementById('feedback');
-const explicationEl = document.getElementById('explication');
 const btnSuivant = document.getElementById('btn-suivant');
 const scoreEl = document.getElementById('score');
 const etoilesEl = document.getElementById('etoiles');
@@ -316,37 +319,18 @@ function jouerSon(type) {
 }
 
 // =============================================
-// 🎲 MOTEUR DE SÉLECTION
+// 🎲 MOTEUR DE SÉLECTION (MÉLANGE UNIQUE)
 // =============================================
 function selectionnerQuestions(nbQuestions = 10) {
-    // On prend une copie neuve et propre à chaque fois
     let stock = [...TOUTES_LES_QUESTIONS];
 
-    // Mélange de Fisher-Yates (ultra efficace)
+    // Mélange de Fisher-Yates
     for (let i = stock.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [stock[i], stock[j]] = [stock[j], stock[i]];
     }
 
-    // On ne prend strictly que le nombre demandé
     return stock.slice(0, nbQuestions);
-}
-
-function changerNbQuestions(nb) {
-    questions = selectionnerQuestions(nb);
-    questionActuelle = 0;
-    score = 0;
-    mettreAJourScore();
-    totalQuestionsEls.forEach(el => { if(el) el.textContent = nb; });
-    afficherQuestion();
-    
-    document.querySelectorAll('.btn-nb').forEach(btn => {
-        if (btn.dataset.nb == nb) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
 }
 
 // =============================================
@@ -380,7 +364,10 @@ function afficherQuestion() {
     }
     
     if (feedbackEl) feedbackEl.style.display = 'none';
-    if (btnSuivant) btnSuivant.style.display = 'none';
+    if (btnSuivant) {
+        btnSuivant.style.display = 'none';
+        btnSuivant.textContent = 'Question suivante ➔'; // Reset du texte
+    }
 }
 
 function verifierReponse(index) {
@@ -451,7 +438,7 @@ function questionSuivante() {
 // =============================================
 function getMessageFelicitations(score, total) {
     const pourcentage = (score / total) * 100;
-    const nomEnfant = "petit Nzoku";
+    const nomEnfant = "Petit Nzoku";
     
     if (pourcentage === 100) {
         return `🌟 WAOUH ${nomEnfant} ! Tu es incollable ! Tu connais le Congo mieux que personne ! 🌟`;
@@ -502,8 +489,6 @@ function mettreAJourScore() {
     if (etoilesEl) {
         const total = questions.length;
         etoilesEl.innerHTML = `<span style="color: #f1c40f;">⭐</span> ${score} / ${total}`;
-        etoilesEl.style.transform = "scale(1.2)";
-        setTimeout(() => etoilesEl.style.transform = "scale(1)", 200);
     }
 }
 
@@ -526,31 +511,23 @@ function lireQuestion() {
 }
 
 // =============================================
-// 🚀 INITIALISATION & LISTENERS
-// =============================================
-// =============================================
-// 🚀 INITIALISATION & LISTENERS (VERSION CORRIGÉE)
+// 🚀 INITIALISATION UNIQUE
 // =============================================
 function initQuiz() {
     initSons();
     
-    // 1. On regarde ce qu'il y a dans l'adresse (ex: ?n=10)
     const urlParams = new URLSearchParams(window.location.search);
     const niveauURL = urlParams.get('n');
     
-    // 2. Si aucun chiffre dans l'URL, on prend 10 par défaut
     let nbACharger = niveauURL ? parseInt(niveauURL) : 10;
     
-    // Sécurité sur les chiffres
     if (isNaN(nbACharger) || nbACharger < 5) nbACharger = 5;
     if (nbACharger > 30) nbACharger = 30;
     
-    // 3. On pioche le lot de questions UNIQUE pour toute la partie
     questions = selectionnerQuestions(nbACharger);
     questionActuelle = 0;
     score = 0;
     
-    // 4. On met à jour les textes et les boutons actifs graphiquement
     mettreAJourScore();
     totalQuestionsEls.forEach(el => { if(el) el.textContent = nbACharger; });
     
@@ -562,58 +539,40 @@ function initQuiz() {
         }
     });
     
-    // 5. On affiche enfin la première question
     afficherQuestion();
 }
 
-// --- ÉCOUTEURS D'ÉVÉNEMENTS SÉCURISÉS ---
-
-// Évènement pour les boutons de changement de quantité (5, 10, 15...)
-// Au lieu de tout mélanger en plein milieu, on recharge proprement la page avec le nouveau paramètre !
-document.querySelectorAll('.btn-nb').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const nouveauNb = e.target.dataset.nb;
-        // On recharge la page proprement, ce qui va créer un TOUT NOUVEAU mélange sans doublon
-        window.location.search = '?n=' + nouveauNb;
+// --- UN SEUL BLOC D'ÉCOUTEURS D'ÉVÉNEMENTS (NETTOYÉ) ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Boutons de changement de quantité (5, 10, 15...)
+    document.querySelectorAll('.btn-nb').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const nouveauNb = e.target.dataset.nb;
+            window.location.search = '?n=' + nouveauNb;
+        });
     });
+
+    if (modePictoCheckbox) {
+        modePictoCheckbox.addEventListener('change', (e) => {
+            modePicto = e.target.checked;
+            afficherQuestion();
+        });
+    }
+
+    if (modeSonCheckbox) {
+        modeSonCheckbox.addEventListener('change', (e) => {
+            sonActive = e.target.checked;
+        });
+    }
+
+    if (btnLire) btnLire.addEventListener('click', lireQuestion);
+    if (btnSuivant) btnSuivant.addEventListener('click', questionSuivante);
+
+    // Lancement de l'initialisation une fois que le DOM est prêt
+    initQuiz();
 });
-
-if (modePictoCheckbox) {
-    modePictoCheckbox.addEventListener('change', (e) => {
-        modePicto = e.target.checked;
-        afficherQuestion();
-    });
-}
-
-if (modeSonCheckbox) {
-    modeSonCheckbox.addEventListener('change', (e) => {
-        sonActive = e.target.checked;
-    });
-}
-
-if (btnLire) btnLire.addEventListener('click', lireQuestion);
-if (btnSuivant) btnSuivant.addEventListener('click', questionSuivante);
-
-// Un seul et unique démarrage au chargement de l'écran
-document.addEventListener('DOMContentLoaded', initQuiz);
+      
+  
+  
 
 
-// Événements sécurisés (ne plantent pas si l'élément HTML est absent)
-if (modePictoCheckbox) {
-    modePictoCheckbox.addEventListener('change', (e) => {
-        modePicto = e.target.checked;
-        afficherQuestion();
-    });
-}
-
-if (modeSonCheckbox) {
-    modeSonCheckbox.addEventListener('change', (e) => {
-        sonActive = e.target.checked;
-    });
-}
-
-if (btnLire) btnLire.addEventListener('click', lireQuestion);
-if (btnSuivant) btnSuivant.addEventListener('click', questionSuivante);
-
-// Démarrage automatique
-initQuiz();
