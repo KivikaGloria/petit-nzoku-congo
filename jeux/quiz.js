@@ -275,6 +275,153 @@ TOUTES_LES_QUESTIONS.push(
 
 
 // =============================================
+// ➕ 51 QUESTIONS DE PLUS (réponses piégeuses à chaque niveau)
+// Les réponses sont mélangées automatiquement : "correct: 0" n'est donc pas un problème.
+// =============================================
+
+TOUTES_LES_QUESTIONS.push(
+    // ---------- 🌱 FACILE ----------
+    { niveau: 1, question: "Quel pays a colonisé le Congo-Brazzaville ?", options: ["La France", "La Belgique", "Le Portugal", "Le Royaume-Uni"], correct: 0,
+      explication: "Notre pays était une colonie française, le Moyen-Congo. Le Congo voisin (aujourd'hui la RDC) était une colonie belge.", pictos: ["🇫🇷", "🇧🇪", "🇵🇹", "🇬🇧"] },
+    { niveau: 1, question: "Quelle ville congolaise possède le grand port sur l'océan Atlantique ?", options: ["Pointe-Noire", "Dolisie", "Brazzaville", "Owando"], correct: 0,
+      explication: "Les bateaux du monde entier s'arrêtent à Pointe-Noire, notre capitale économique.", pictos: ["⚓", "🏘️", "🏛️", "🌲"] },
+    { niveau: 1, question: "Quel oiseau gris à la queue rouge, très doué pour imiter les voix, vit dans nos forêts ?", options: ["Le perroquet gris", "Le flamant rose", "Le toucan", "L'aigle"], correct: 0,
+      explication: "Le perroquet gris est menacé, car on l'attrape pour le vendre. Le toucan, lui, vit en Amérique.", pictos: ["🦜", "🦩", "🐦", "🦅"] },
+    { niveau: 1, question: "Quel énorme animal passe ses journées dans l'eau et mange de l'herbe la nuit ?", options: ["L'hippopotame", "Le rhinocéros", "Le zèbre", "La girafe"], correct: 0,
+      explication: "L'hippopotame reste dans l'eau le jour pour se protéger du soleil, puis il broute la nuit.", pictos: ["🦛", "🦏", "🦓", "🦒"] },
+    { niveau: 1, question: "Que veut dire « braconnage » ?", options: ["Chasser des animaux protégés, c'est interdit", "Planter des arbres", "Pêcher pour s'amuser", "Photographier les animaux"], correct: 0,
+      explication: "Le braconnage met en danger les éléphants, les gorilles et les pangolins. Il est interdit par la loi.", pictos: ["🚫", "🌱", "🎣", "📷"] },
+    { niveau: 1, question: "Quel geste protège le fleuve Congo ?", options: ["Ne jamais y jeter de déchets", "Y jeter les sacs en plastique", "Y verser de l'huile usagée", "Y laver des batteries"], correct: 0,
+      explication: "Les déchets polluent l'eau et font du mal aux poissons. Jette toujours tes déchets à la poubelle !", pictos: ["♻️", "🛍️", "🛢️", "🔋"] },
+    { niveau: 1, question: "Comment surnomme-t-on l'équipe nationale de football du Congo ?", options: ["Les Diables Rouges", "Les Lions Indomptables", "Les Éléphants", "Les Léopards"], correct: 0,
+      explication: "Chez nous, ce sont les Diables Rouges. Lions Indomptables : Cameroun. Éléphants : Côte d'Ivoire. Léopards : RDC.", pictos: ["😈", "🦁", "🐘", "🐆"] },
+    { niveau: 1, question: "Que veut dire « Nzoku » ?", options: ["Éléphant", "Lion", "Fleuve", "Soleil"], correct: 0,
+      explication: "Nzoku veut dire éléphant. C'est pour ça que notre mascotte s'appelle Petit Nzoku !", pictos: ["🐘", "🦁", "🌊", "☀️"] },
+    { niveau: 1, question: "Quel fruit sucré porte une couronne de feuilles piquantes ?", options: ["L'ananas", "La mangue", "La banane", "La papaye"], correct: 0,
+      explication: "L'ananas pousse très bien dans le climat chaud et humide du Congo.", pictos: ["🍍", "🥭", "🍌", "🍈"] },
+    { niveau: 1, question: "Quel fruit ressemble à une grosse banane mais se mange cuit ?", options: ["La banane plantain", "La pastèque", "La papaye", "Le raisin"], correct: 0,
+      explication: "La banane plantain se mange bouillie, frite ou grillée, avec du poisson ou de la viande.", pictos: ["🍌", "🍉", "🍈", "🍇"] },
+    { niveau: 1, question: "Quelle couleur est en haut à gauche du drapeau congolais ?", options: ["Le vert", "Le rouge", "Le jaune", "Le bleu"], correct: 0,
+      explication: "Le vert est en haut près du mât, le jaune passe en diagonale au milieu et le rouge est en bas.", pictos: ["🟢", "🔴", "🟡", "🔵"] },
+    { niveau: 1, question: "Quel est l'animal terrestre le plus lourd du monde ?", options: ["L'éléphant", "La girafe", "Le rhinocéros", "L'hippopotame"], correct: 0,
+      explication: "L'éléphant peut peser plusieurs tonnes. La girafe est la plus haute, mais bien plus légère.", pictos: ["🐘", "🦒", "🦏", "🦛"] },
+    { niveau: 1, question: "Que mange l'éléphant ?", options: ["Des plantes", "De la viande", "Des poissons", "Des insectes"], correct: 0,
+      explication: "L'éléphant est herbivore : il mange de l'herbe, des feuilles, des fruits et de l'écorce, plus de 100 kg par jour !", pictos: ["🌿", "🍖", "🐟", "🐜"] },
+
+    // ---------- 🌿 MOYEN ----------
+    { niveau: 2, question: "Quel est le plus haut sommet du Congo ?", options: ["Le mont Nabemba", "Le Kilimandjaro", "Le mont Cameroun", "Le mont Kenya"], correct: 0,
+      explication: "Le mont Nabemba (environ 1 020 m), dans le nord, est le point le plus haut du pays. Le Kilimandjaro est en Tanzanie." },
+    { niveau: 2, question: "Dans quel hémisphère se trouve Brazzaville ?", options: ["L'hémisphère sud", "L'hémisphère nord", "Pile sur l'équateur", "Au pôle Sud"], correct: 0,
+      explication: "Brazzaville est à environ 4° au sud de l'équateur. Seul le nord du Congo est dans l'hémisphère nord." },
+    { niveau: 2, question: "Quelle monnaie utilise-t-on en République du Congo ?", options: ["Le franc CFA", "Le franc congolais", "Le dollar", "Le naira"], correct: 0,
+      explication: "Nous utilisons le franc CFA d'Afrique centrale. Le franc congolais est la monnaie de la RDC, notre voisine." },
+    { niveau: 2, question: "Comment s'appelait le Congo avant l'indépendance ?", options: ["Le Moyen-Congo", "Le Congo belge", "Le Haut-Congo", "Le Zaïre"], correct: 0,
+      explication: "C'était le Moyen-Congo, colonie française. Le Congo belge et le Zaïre sont d'anciens noms de la RDC." },
+    { niveau: 2, question: "Comment appelle-t-on le grand tambour sacré d'Afrique centrale ?", options: ["Le ngoma", "Le djembé", "La kora", "Le balafon"], correct: 0,
+      explication: "Le ngoma est un tambour de nos régions. Le djembé, la kora et le balafon viennent plutôt d'Afrique de l'Ouest." },
+    { niveau: 2, question: "Quel jour célèbre-t-on la Journée de l'Afrique ?", options: ["Le 25 mai", "Le 15 août", "Le 1er mai", "Le 21 mars"], correct: 0,
+      explication: "Le 25 mai, tout le continent fête l'Afrique. Attention : le 15 août est notre fête nationale !" },
+    { niveau: 2, question: "De quel arbre tire-t-on l'huile de palme rouge ?", options: ["Le palmier à huile", "Le cocotier", "L'olivier", "Le baobab"], correct: 0,
+      explication: "L'huile de palme vient des fruits du palmier à huile. L'huile de coco, elle, vient du cocotier." },
+    { niveau: 2, question: "Quel singe au visage rouge et bleu vit dans les forêts du sud-ouest du Congo ?", options: ["Le mandrill", "Le babouin", "Le capucin", "Le macaque"], correct: 0,
+      explication: "Le mandrill est le plus grand de tous les singes de la famille des babouins, et ses couleurs sont uniques." },
+    { niveau: 2, question: "Quel grand singe, notre proche cousin, vit dans nos forêts ?", options: ["Le chimpanzé", "L'orang-outan", "Le gibbon", "Le babouin"], correct: 0,
+      explication: "Le chimpanzé vit en Afrique. L'orang-outan, lui, vit seulement en Asie." },
+    { niveau: 2, question: "Comment s'appelle le massif forestier du sud-ouest du Congo, près de l'océan ?", options: ["Le Mayombe", "Le Hoggar", "Le Drakensberg", "Le Kilimandjaro"], correct: 0,
+      explication: "Le Mayombe est une forêt de montagnes couverte d'arbres géants, au sud-ouest du pays." },
+    { niveau: 2, question: "Que veut dire « bolingo » en lingala ?", options: ["L'amour", "La maison", "Le fleuve", "Le pain"], correct: 0,
+      explication: "Bolingo veut dire amour. Et « matondi » veut dire merci !" },
+    { niveau: 2, question: "Quelle grande université publique se trouve à Brazzaville ?", options: ["L'université Marien-Ngouabi", "L'université de Kinshasa", "L'université Cheikh-Anta-Diop", "La Sorbonne"], correct: 0,
+      explication: "L'université Marien-Ngouabi porte le nom d'un ancien président. L'université Cheikh-Anta-Diop est à Dakar." },
+
+    // ---------- 🌳 DIFFICILE ----------
+    { niveau: 3, question: "Quelle rivière traverse le sud de Brazzaville avant de rejoindre le fleuve Congo ?", options: ["Le Djoué", "L'Oubangui", "La Sangha", "Le Kouilou"], correct: 0,
+      explication: "Le Djoué traverse Brazzaville. L'Oubangui et la Sangha sont de grands affluents plus au nord." },
+    { niveau: 3, question: "Quel général français a fait de Brazzaville la capitale de la « France libre » en 1940 ?", options: ["Charles de Gaulle", "Philippe Pétain", "Napoléon Bonaparte", "Jacques Chirac"], correct: 0,
+      explication: "Pendant la Seconde Guerre mondiale, de Gaulle a installé la « France libre » à Brazzaville." },
+    { niveau: 3, question: "Qui a été président du Congo de 1963 à 1968 ?", options: ["Alphonse Massamba-Débat", "Fulbert Youlou", "Marien Ngouabi", "Pascal Lissouba"], correct: 0,
+      explication: "Alphonse Massamba-Débat a succédé à Fulbert Youlou en 1963. Un grand stade de Brazzaville porte son nom." },
+    { niveau: 3, question: "Qui a été élu président en 1992, après la fin du parti unique ?", options: ["Pascal Lissouba", "Bernard Kolélas", "Joachim Yhombi-Opango", "André Milongo"], correct: 0,
+      explication: "Pascal Lissouba a été le premier président élu au suffrage universel en 1992. Bernard Kolélas était son rival." },
+    { niveau: 3, question: "En quelle année s'est tenue la Conférence nationale souveraine du Congo ?", options: ["1991", "1981", "1996", "2001"], correct: 0,
+      explication: "En 1991, la Conférence nationale a mis fin au parti unique et ouvert la voie au multipartisme." },
+    { niveau: 3, question: "Comment s'appelait le roi des Tékés qui signa un traité avec Brazza en 1880 ?", options: ["Makoko", "Lumumba", "Ntinu Wene", "Soundiata"], correct: 0,
+      explication: "Le roi Makoko (Iloo Ier) dirigeait les Tékés, autour de l'actuelle Brazzaville. Soundiata est un roi du Mali." },
+    { niveau: 3, question: "Quel grand royaume ancien s'étendait sur le sud du Congo, le nord de l'Angola et l'ouest de la RDC ?", options: ["Le royaume Kongo", "L'empire du Mali", "Le royaume zoulou", "L'empire ashanti"], correct: 0,
+      explication: "Le royaume Kongo était très puissant avant l'arrivée des Européens. Le royaume de Loango existait aussi sur la côte." },
+    { niveau: 3, question: "En quelle année l'UNESCO a-t-elle inscrit la rumba congolaise au patrimoine culturel de l'humanité ?", options: ["2021", "2011", "2001", "2015"], correct: 0,
+      explication: "En 2021, la rumba congolaise, partagée par Brazzaville et Kinshasa, est entrée au patrimoine immatériel de l'UNESCO." },
+    { niveau: 3, question: "Lequel de ces chanteurs est congolais de Brazzaville ?", options: ["Zao", "Papa Wemba", "Koffi Olomidé", "Fally Ipupa"], correct: 0,
+      explication: "Zao vient de la République du Congo. Les trois autres artistes viennent de la RDC, de l'autre côté du fleuve." },
+    { niveau: 3, question: "Comment appelle-t-on les statues rituelles à clous du peuple kongo ?", options: ["Les nkisi", "Les kente", "Les masques dan", "Les bronzes du Bénin"], correct: 0,
+      explication: "Les nkisi sont des statues rituelles kongo. Les kente (Ghana), masques dan (Côte d'Ivoire) et bronzes du Bénin viennent d'ailleurs." },
+    { niveau: 3, question: "Quelle date célèbre-t-on la Journée de l'enfant africain ?", options: ["Le 16 juin", "Le 1er juin", "Le 20 novembre", "Le 25 mai"], correct: 0,
+      explication: "Le 16 juin, c'est la Journée de l'enfant africain. Le 20 novembre est la Journée universelle de l'enfance." },
+    { niveau: 3, question: "De quelle plante vient la feuille acidulée du plat « ngaï-ngaï » ?", options: ["L'oseille de Guinée", "L'épinard", "Le chou", "La laitue"], correct: 0,
+      explication: "Le ngaï-ngaï se prépare avec des feuilles d'oseille de Guinée (le même hibiscus qui donne le bissap)." },
+    { niveau: 3, question: "Quel grand singe ne vit qu'en RDC, de l'autre côté du fleuve ?", options: ["Le bonobo", "Le chimpanzé", "Le gorille", "Le mandrill"], correct: 0,
+      explication: "Le bonobo vit uniquement en RDC, au sud du fleuve Congo. On le confond souvent avec le chimpanzé." },
+    { niveau: 3, question: "Quelle immense tortue marine pond ses œufs sur nos plages de l'Atlantique ?", options: ["La tortue luth", "La tortue géante des Galápagos", "La tortue de terre", "La tortue d'eau douce"], correct: 0,
+      explication: "La tortue luth est la plus grande tortue marine du monde. Elle vient pondre sur le littoral congolais." },
+    { niveau: 3, question: "Comment s'appellent les plateaux de savane au nord de Brazzaville ?", options: ["Les plateaux Batéké", "Les hautes terres d'Éthiopie", "L'Altiplano", "Le plateau du Katanga"], correct: 0,
+      explication: "Les plateaux Batéké, terre du peuple téké, sont couverts de savane au nord de Brazzaville." },
+    { niveau: 3, question: "Quel peuple, avec les Tékés et les Mbochis, est l'un des grands groupes du Congo ?", options: ["Les Kongo", "Les Zoulous", "Les Massaïs", "Les Berbères"], correct: 0,
+      explication: "Les Kongo vivent surtout dans le sud du pays. Les Zoulous, Massaïs et Berbères vivent dans d'autres régions d'Afrique." },
+    { niveau: 3, question: "Comment s'appelle l'aéroport international de Brazzaville ?", options: ["Maya-Maya", "N'Djili", "Léon-Mba", "Bole"], correct: 0,
+      explication: "Maya-Maya est l'aéroport de Brazzaville. N'Djili est à Kinshasa, Léon-Mba à Libreville et Bole à Addis-Abeba." },
+    { niveau: 3, question: "En quelle année le Congo a-t-il remporté la Coupe d'Afrique des nations de football ?", options: ["1972", "1968", "1992", "2002"], correct: 0,
+      explication: "Les Diables Rouges ont gagné la CAN 1972, organisée au Cameroun. C'est notre plus grand titre !" }
+);
+
+// =============================================
+// 🏛️ HISTOIRE ET ARMOIRIES DU CONGO (18 questions)
+// =============================================
+
+TOUTES_LES_QUESTIONS.push(
+    // ---------- Armoiries ----------
+    { niveau: 1, question: "Quels animaux soutiennent le bouclier sur les armoiries du Congo ?", options: ["Deux éléphants", "Deux lions", "Deux gorilles", "Deux léopards"], correct: 0,
+      explication: "Deux grands éléphants tiennent le bouclier. L'éléphant est notre animal symbole !", pictos: ["🐘🐘", "🦁🦁", "🦍🦍", "🐆🐆"] },
+    { niveau: 2, question: "Quel animal rouge se dresse au centre du bouclier des armoiries du Congo ?", options: ["Un lion", "Un éléphant", "Un léopard", "Un gorille"], correct: 0,
+      explication: "Un lion rouge se dresse sur le bouclier. Les éléphants, eux, se tiennent de chaque côté pour le soutenir." },
+    { niveau: 2, question: "Que tient le lion sur les armoiries du Congo ?", options: ["Une torche", "Une épée", "Une lance", "Un livre"], correct: 0,
+      explication: "Le lion tient une torche enflammée, au centre des armoiries." },
+    { niveau: 3, question: "Comment est le bouclier des armoiries du Congo ?", options: ["Doré, avec une bande verte ondulée", "Bleu, avec une étoile", "Rouge, avec une croix", "Vert, avec un croissant"], correct: 0,
+      explication: "Le fond du bouclier est doré, traversé au milieu par une bande verte en forme de vague." },
+    { niveau: 3, question: "En quelle année les armoiries au lion et aux deux éléphants sont-elles revenues, après un emblème plus simple ?", options: ["1991", "1979", "1997", "2002"], correct: 0,
+      explication: "Ces armoiries datent de 1960. De 1970 à 1991, un emblème plus simple les a remplacées, puis elles sont revenues en 1991." },
+
+    // ---------- Symboles ----------
+    { niveau: 2, question: "Comment s'appelle l'hymne national du Congo ?", options: ["La Congolaise", "La Marseillaise", "La Brabançonne", "La Zaïroise"], correct: 0,
+      explication: "Notre hymne s'appelle « La Congolaise ». La Marseillaise est l'hymne de la France, et la Brabançonne celui de la Belgique." },
+    { niveau: 3, question: "Entre 1970 et 1991, quelle couleur dominait le drapeau du Congo ?", options: ["Le rouge", "Le bleu", "Le noir", "Le blanc"], correct: 0,
+      explication: "Pendant la République populaire, le drapeau était rouge. En 1991, le drapeau vert, jaune et rouge est revenu." },
+    { niveau: 3, question: "Comment s'appelait le Congo de 1970 à 1991 ?", options: ["La République populaire du Congo", "La République du Zaïre", "Le Moyen-Congo", "Le Congo belge"], correct: 0,
+      explication: "Sous Marien Ngouabi, le pays est devenu la République populaire du Congo, jusqu'en 1991." },
+
+    // ---------- Histoire ----------
+    { niveau: 1, question: "Comment appelle-t-on le jour où un pays devient libre de son colonisateur ?", options: ["L'indépendance", "La colonisation", "La conférence", "L'élection"], correct: 0,
+      explication: "C'est l'indépendance. Le Congo a fêté la sienne le 15 août 1960.", pictos: ["🕊️", "⛓️", "🎤", "🗳️"] },
+    { niveau: 2, question: "Quel surnom donne-t-on à Brazzaville ?", options: ["Brazza la verte", "Brazza la rouge", "Brazza la blanche", "Brazza la bleue"], correct: 0,
+      explication: "On l'appelle « Brazza la verte » à cause de sa végétation luxuriante." },
+    { niveau: 3, question: "Comment appelle-t-on les trois journées d'août 1963 qui ont mis fin au pouvoir de Fulbert Youlou ?", options: ["Les Trois Glorieuses", "Les Trois Mousquetaires", "Les Trois Couleurs", "Les Trois Vallées"], correct: 0,
+      explication: "Du 13 au 15 août 1963, les « Trois Glorieuses » ont porté Alphonse Massamba-Débat au pouvoir." },
+    { niveau: 3, question: "En quelle année a eu lieu la conférence de Brazzaville, organisée par le général de Gaulle ?", options: ["1944", "1914", "1960", "1884"], correct: 0,
+      explication: "En 1944, pendant la Seconde Guerre mondiale, cette conférence a préparé l'avenir des colonies françaises d'Afrique." },
+    { niveau: 3, question: "Brazzaville était la capitale de quelle grande fédération coloniale française ?", options: ["L'Afrique-Équatoriale française (AEF)", "L'Afrique-Occidentale française (AOF)", "L'Union européenne", "La Communauté des États sahéliens"], correct: 0,
+      explication: "Brazzaville dirigeait l'AEF. La capitale de l'AOF était Dakar." },
+    { niveau: 3, question: "En 1958, le Moyen-Congo est devenu une république autonome au sein de quel ensemble ?", options: ["La Communauté française", "L'Union soviétique", "Le Commonwealth", "La Ligue arabe"], correct: 0,
+      explication: "En 1958, notre pays est devenu la République du Congo, encore liée à la France, avant l'indépendance totale en 1960." },
+    { niveau: 3, question: "Dans quel pays est né Pierre Savorgnan de Brazza ?", options: ["En Italie", "En France", "Au Portugal", "En Belgique"], correct: 0,
+      explication: "Brazza est né à Rome en 1852. Il a ensuite pris la nationalité française pour explorer l'Afrique centrale." },
+    { niveau: 3, question: "Quel monument de Brazzaville abrite les restes de Pierre Savorgnan de Brazza ?", options: ["Le mémorial Pierre-Savorgnan-de-Brazza", "La basilique Sainte-Anne", "Le stade Massamba-Débat", "La tour Nabemba"], correct: 0,
+      explication: "Le mémorial de Brazza, à Brazzaville, abrite les restes de l'explorateur depuis 2006." },
+    { niveau: 3, question: "Quel ancien royaume de la côte atlantique avait pour capitale Mbanza Loango ?", options: ["Le royaume de Loango", "Le royaume Kongo", "L'empire du Mali", "Le royaume du Bénin"], correct: 0,
+      explication: "Le royaume de Loango s'étendait sur la côte. La capitale du royaume Kongo, Mbanza Kongo, est aujourd'hui en Angola." },
+    { niveau: 3, question: "Qui a dirigé le Congo de 1977 à 1979 ?", options: ["Joachim Yhombi-Opango", "Marien Ngouabi", "Alphonse Massamba-Débat", "Pascal Lissouba"], correct: 0,
+      explication: "Joachim Yhombi-Opango a pris la tête du pays en 1977, après Marien Ngouabi." }
+);
+
+// =============================================
 // 🎮 LOGIQUE DU JEU
 // Démarrage direct : 5 questions faciles, puis 5 moyennes, puis 5 difficiles.
 // Le score continue d'une manche à l'autre. Les questions déjà vues
