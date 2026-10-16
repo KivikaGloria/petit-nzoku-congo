@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nzoku-cache-v6'; // 
+const CACHE_NAME = 'nzoku-cache-v4'; // Nouvelle version !
 
 const ASSETS = [
   '',
@@ -71,7 +71,7 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// 3. Stratégie réseau : On pioche d'abord dans le cache du téléphone.  
+// 3. Stratégie réseau : On pioche d'abord dans le cache du téléphone. 
 // Si le fichier n'y est pas, on demande au réseau (si connecté).
 self.addEventListener('fetch', (e) => {
   e.respondWith(

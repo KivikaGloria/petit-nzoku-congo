@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Congo-Brazzaville - Petit Nzoku</title>
+    <!-- Affiche à l'écran toute erreur JavaScript (utile sur téléphone) -->
+    <script>
+    window.onerror = function (msg, src, ligne) {
+        var d = document.createElement('div');
+        d.style.cssText = 'background:#e3211c;color:#fff;padding:12px;font:14px monospace;position:relative;z-index:99';
+        d.textContent = '⚠️ ' + msg + ' (' + String(src).split('/').pop() + ', ligne ' + ligne + ')';
+        document.addEventListener('DOMContentLoaded', function () { document.body.prepend(d); });
+        if (document.body) document.body.prepend(d);
+    };
+    </script>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="quiz.css">
 </head>
@@ -15,56 +25,39 @@
 
     <main>
         <div class="quiz-container">
-            
-            <!-- 🌟 NOUVEAU : Choix de la difficulté -->
-            <div class="choix-niveau-box" id="selection-niveau">
-                <h3>🎯 Choisis ton niveau de jeu :</h3>
-                <div class="niveau-buttons">
-                    <button class="btn-niveau facile" onclick="choisirNiveau('facile')">🌱 Facile</button>
-                    <button class="btn-niveau moyen" onclick="choisirNiveau('moyen')">🌿 Moyen</button>
-                    <button class="btn-niveau difficile" onclick="choisirNiveau('difficile')">🌳 Difficile</button>
-                </div>
-            </div>
 
-            <!-- Zone de Quiz (Masquée au départ, affichée après choix du niveau) -->
-            <div id="zone-quiz" class="zone-quiz hidden">
-                
+            <!-- Zone de quiz : visible dès l'arrivée (plus de choix de niveau) -->
+            <div id="zone-quiz" class="zone-quiz">
+
                 <!-- En-tête du quiz -->
                 <div class="quiz-header">
                     <div class="score-box">
                         <span class="score-label">Score</span>
                         <span class="score-valeur" id="score">0</span>
-                        <span class="score-max" id="total-questions">10</span>
+                        <span class="score-max" id="total-questions">15</span>
                     </div>
-                    
-                    <div class="etoiles-box" id="etoiles">
-                        ★★★★★★★★★★
-                    </div>
-                    
+
+                    <div class="etoiles-box" id="etoiles">★★★★★</div>
+
                     <div class="question-number">
-                        Question <span id="question-actuelle">1</span>/<span id="total-questions2">10</span>
+                        Question <span id="question-actuelle">1</span>/<span id="total-questions2">15</span>
                     </div>
                 </div>
 
                 <!-- Question et image -->
                 <div class="question-box">
-                    <h2 id="question">Quel est l'animal symbole du Congo-Brazzaville ?</h2>
-                    
+                    <h2 id="question">Chargement de la question…</h2>
+
                     <div class="question-image" id="question-image">
                         <img src="" alt="Image de la question" id="image-question" style="display: none;">
                     </div>
                 </div>
 
-                <!-- Réponses -->
-                <div class="reponses" id="reponses">
-                    <!-- Généré par JavaScript -->
-                </div>
+                <!-- Réponses (générées par JavaScript) -->
+                <div class="reponses" id="reponses"></div>
 
-                <!-- Feedback -->
-                <div class="feedback" id="feedback" style="display: none;">
-                    <p id="feedback-message"></p>
-                    <p id="explication" class="explication"></p>
-                </div>
+                <!-- Feedback (généré par JavaScript) -->
+                <div class="feedback" id="feedback" style="display: none;"></div>
 
                 <!-- Bouton suivant -->
                 <button id="btn-suivant" class="bouton" style="display: none;">Question suivante</button>
@@ -72,10 +65,10 @@
                 <!-- Options d'accessibilité -->
                 <div class="options-accessibilite">
                     <h3>🌍 Options pour tous les enfants</h3>
-                    
+
                     <div class="option-grille">
                         <div class="option">
-                            <label class="switch-label">
+                            <label class="switch-label" for="mode-picto">
                                 <span class="option-emoji">🖼️</span> Pictogrammes
                             </label>
                             <label class="switch">
@@ -83,9 +76,9 @@
                                 <span class="slider"></span>
                             </label>
                         </div>
-                        
+
                         <div class="option">
-                            <label class="switch-label">
+                            <label class="switch-label" for="mode-son">
                                 <span class="option-emoji">🔊</span> Sons
                             </label>
                             <label class="switch">
@@ -93,42 +86,25 @@
                                 <span class="slider"></span>
                             </label>
                         </div>
-                        
+
+                        <!-- Le clic est géré dans quiz.js (pas de onclick ici, sinon la question est lue 2 fois) -->
                         <div class="option">
-                            <button id="btn-lire" class="bouton-icone" onclick="lireQuestion()">
+                            <button id="btn-lire" class="bouton-icone" type="button">
                                 <span class="option-emoji">🗣️</span> Lire la question
                             </button>
                         </div>
 
-                        <!-- 🎤 NOUVEAU : Bouton pour répondre au micro -->
+                        <!-- Pas encore programmés : désactivés pour éviter les erreurs -->
                         <div class="option">
-                            <button id="btn-micro" class="bouton-icone" onclick="ecouterReponse()">
-                                <span class="option-emoji">🎤</span> Répondre au micro
+                            <button id="btn-micro" class="bouton-icone" type="button" disabled>
+                                <span class="option-emoji">🎤</span> Répondre au micro (bientôt)
                             </button>
                         </div>
 
-                        <!-- 🤟 NOUVEAU : Bouton Langue des Signes -->
                         <div class="option">
-                            <button id="btn-lsf" class="bouton-icone" onclick="toggleLangueDesSignes()">
-                                <span class="option-emoji">🤟</span> Langue des signes
+                            <button id="btn-lsf" class="bouton-icone" type="button" disabled>
+                                <span class="option-emoji">🤟</span> Langue des signes (bientôt)
                             </button>
-                        </div>
-                    </div>
-                    
-                    <!-- 🤟 NOUVEAU : Conteneur vidéo/GIF Langue des signes -->
-                    <div id="zone-signe" class="zone-signe hidden" style="margin-top: 15px; text-align: center;">
-                        <p style="font-weight: bold; margin-bottom: 5px;">Langue des Signes :</p>
-                        <div id="signe-media-container"></div>
-                    </div>
-
-                    <div class="choix-nb-questions">
-                        <p>Nombre de questions :</p>
-                        <div class="nb-buttons">
-                            <button class="btn-nb" data-nb="5">5</button>
-                            <button class="btn-nb active" data-nb="10">10</button>
-                            <button class="btn-nb" data-nb="15">15</button>
-                            <button class="btn-nb" data-nb="20">20</button>
-                            <button class="btn-nb" data-nb="30">30</button>
                         </div>
                     </div>
                 </div>
@@ -142,6 +118,7 @@
         <a href="../index.html" class="bouton">← Retour à l'accueil</a>
     </footer>
 
-    <script src="quiz.js"></script>
+    <!-- Un seul fichier : questions + logique -->
+    <script src="quiz.js?v=4"></script>
 </body>
 </html>
