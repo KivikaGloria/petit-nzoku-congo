@@ -6,7 +6,7 @@
     <title>Nettoie le fleuve Congo - Petit Nzoku</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="nettoye-fleuve.css">
-    
+    <link rel="stylesheet" href="nettoye-fleuve-plus.css">
 </head>
 <body>
     <header>
@@ -15,50 +15,46 @@
     </header>
 
     <main>
-        <div class="carte-jeu">
-    <div class="emoji-jeu">🌊</div>
-    <h3>Nettoie le fleuve Congo</h3>
-    <p>Protège notre environnement</p>
-    <p class="details">♻️ 4 niveaux · Conseils écolos</p>
-</div>
         <div class="jeu-container">
             <!-- En-tête du jeu -->
             <div class="jeu-header">
                 <div class="score-box">
                     <span class="score-label">Déchets collectés</span>
                     <span class="score-valeur" id="score">0</span>
-                    <span class="score-max" id="total-dechets">10</span>
+                    <span class="score-max">/ <span id="total-dechets">4</span></span>
                 </div>
-                
+
                 <div class="timer-box" id="timer">
                     ⏱️ <span id="temps">60</span>s
                 </div>
-                
+
                 <div class="niveau-box">
                     Niveau <span id="niveau">1</span>
                 </div>
             </div>
 
-            <!-- Zone de jeu (canvas) -->
+            <!-- Zone de jeu -->
             <div class="canvas-container">
-                <canvas id="jeuCanvas" width="800" height="400"></canvas>
+                <canvas id="jeuCanvas" width="800" height="400" role="img"
+                        aria-label="Le fleuve Congo avec des déchets qui flottent. Touche les déchets pour les ramasser."></canvas>
             </div>
 
             <!-- Messages éducatifs -->
-            <div class="message-educatif" id="messageEducatif" style="display: none;">
+            <div class="message-educatif" id="messageEducatif" role="status" aria-live="polite" style="display: none;">
                 <p id="messageTexte"></p>
             </div>
 
-            <!-- Bouton recommencer -->
+            <!-- Boutons -->
             <div class="controles">
-                <button id="btn-recommencer" class="bouton">🔄 Recommencer</button>
-                <button id="btn-niveau-suivant" class="bouton" style="display: none;">➡️ Niveau suivant</button>
+                <button id="btn-recommencer" class="bouton" type="button">🔄 Recommencer</button>
+                <button id="btn-niveau-suivant" class="bouton" type="button" style="display: none;">➡️ Niveau suivant</button>
             </div>
 
             <!-- Conseils écologiques -->
             <div class="conseils-eco">
                 <h3>🌍 Le savais-tu ?</h3>
                 <p id="conseil">Clique sur les déchets pour nettoyer le fleuve !</p>
+                <p class="note-estimations">Ces durées sont des estimations : elles changent selon le soleil, l'eau et la chaleur.</p>
             </div>
 
             <!-- Options d'accessibilité -->
@@ -66,7 +62,7 @@
                 <h3>🖐️ Options</h3>
                 <div class="option-grille">
                     <div class="option">
-                        <label class="switch-label">
+                        <label class="switch-label" for="mode-son">
                             <span class="option-emoji">🔊</span> Sons
                         </label>
                         <label class="switch">

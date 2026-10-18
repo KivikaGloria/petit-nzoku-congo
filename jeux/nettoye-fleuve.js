@@ -1,39 +1,51 @@
-// jeux/nettoye-fleuve.js - Version avec les belles vagues ET les sons
+// jeux/nettoye-fleuve.js - Nettoie le fleuve Congo (version relue)
 
 // =============================================
-// 🌊 JEU : NETTOIE LE FLEUVE CONGO
+// ⚙️ CONFIGURATION
 // =============================================
-
-// Configuration
 const CONFIG = {
     niveaux: [
-        { nom: "Débutant", dechets: 3, temps: 60 },
-        { nom: "Intermédiaire", dechets: 4, temps: 50 },
-        { nom: "Expert", dechets: 5, temps: 45 },
-        { nom: "Champion", dechets: 6, temps: 40 }
+        { nom: "Débutant",      dechets: 4,  temps: 60, vitesse: 1 },
+        { nom: "Intermédiaire", dechets: 6,  temps: 55, vitesse: 1.3 },
+        { nom: "Expert",        dechets: 8,  temps: 50, vitesse: 1.6 },
+        { nom: "Champion",      dechets: 10, temps: 45, vitesse: 2 }
     ]
 };
 
-// Types de déchets
 const TYPES_DECHETS = [
-    { emoji: "🧴", points: 1, conseil: "Les bouteilles plastique polluent beaucoup !" },
-    { emoji: "🛍️", points: 1, conseil: "Utilise des sacs réutilisables !" },
-    { emoji: "🥫", points: 1, conseil: "Les canettes se recyclent !" }
+    { emoji: "🧴",
+      degradation: "Une bouteille en plastique peut mettre de 100 à 1 000 ans à se dégrader !",
+      conseil: "Ne la jette jamais dans l'eau : mets-la à la poubelle ou au recyclage." },
+    { emoji: "🛍️",
+      degradation: "Un sac plastique met environ 450 ans à se dégrader !",
+      conseil: "Il peut étouffer les poissons et les tortues. Utilise un sac réutilisable !" },
+    { emoji: "🥫",
+      degradation: "Une canette en métal met de 100 à 200 ans à se dégrader !",
+      conseil: "Elle se recycle : mets-la dans le bon bac !" },
+    { emoji: "🔋",
+      degradation: "Une pile peut polluer l'eau et le sol pendant des centaines d'années !",
+      conseil: "Elle contient des produits toxiques : rapporte-la dans un point de collecte." },
+    { emoji: "🍾",
+      degradation: "Une bouteille en verre met environ 4 000 ans à disparaître !",
+      conseil: "Le verre se recycle, mais il peut couper : ne le laisse jamais traîner !" }
 ];
 
-// Variables
+// =============================================
+// 📦 VARIABLES
+// =============================================
 let canvas, ctx;
 let dechets = [];
-let score = 0;
+let collectes = 0;      // déchets ramassés dans CE niveau
+let scoreTotal = 0;     // déchets ramassés depuis le début
 let tempsRestant = 60;
 let niveauActuel = 0;
 let jeuActif = true;
 let timer;
 let offsetVagues = 0;
+let xPirogue = -40;
 let sonActive = true;
-let sons = {};
+let delaiMessage = null;
 
-// Éléments DOM
 const scoreEl = document.getElementById('score');
 const totalDechetsEl = document.getElementById('total-dechets');
 const tempsEl = document.getElementById('temps');
@@ -45,42 +57,79 @@ const btnNiveauSuivant = document.getElementById('btn-niveau-suivant');
 const conseilEl = document.getElementById('conseil');
 const modeSonCheckbox = document.getElementById('mode-son');
 
+const TEXTE_CONSEIL_DEPART = "Clique sur les déchets pour nettoyer le fleuve !";
+
 // =============================================
-// 🔊 FONCTIONS AUDIO
+// 🔊 SONS (fichiers dans ../sons/, sinon sons fabriqués par le navigateur)
 // =============================================
+const sons = {};
+const fichierManquant = {};
+let ctxAudio = null;
 
 function chargerSons() {
+    ['plouf', 'bravo', 'niveau'].forEach((nom) => {
+        try {
+            const a = new Audio('../sons/' + nom + '.mp3');
+            a.addEventListener('error', () => { fichierManquant[nom] = true; });
+            sons[nom] = a;
+        } catch (e) { fichierManquant[nom] = true; }
+    });
+}
+
+function synthese(nom) {
     try {
-        // Mets le bon chemin selon où sont tes sons
-        sons.plouf = new Audio('../sons/plouf.mp3');     // Si dans dossier sons/
-        sons.bravo = new Audio('../sons/bravo.mp3');     // Si dans dossier sons/
-        sons.niveau = new Audio('../sons/niveau.mp3');   // Si dans dossier sons/
-        
-        // Alternative si les sons sont dans le même dossier :
-        // sons.plouf = new Audio('plouf.mp3');
-        // sons.bravo = new Audio('bravo.mp3');
-        // sons.niveau = new Audio('niveau.mp3');
-        
-        console.log("✅ Sons chargés");
-    } catch (e) {
-        console.log("❌ Erreur chargement sons:", e);
-    }
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        ctxAudio = ctxAudio || new AC();
+        if (ctxAudio.state === 'suspended') ctxAudio.resume();
+        const notes = nom === 'plouf' ? [[620, 0], [260, 0.08]]
+            : nom === 'niveau' ? [[523, 0], [659, 0.12], [784, 0.24]]
+            : [[523, 0], [659, 0.12], [784, 0.24], [1047, 0.36]];
+        notes.forEach(([freq, delai]) => {
+            const t = ctxAudio.currentTime + delai;
+            const o = ctxAudio.createOscillator();
+            const g = ctxAudio.createGain();
+            o.type = nom === 'plouf' ? 'sine' : 'triangle';
+            o.frequency.setValueAtTime(freq, t);
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(0.2, t + 0.02);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+            o.connect(g);
+            g.connect(ctxAudio.destination);
+            o.start(t);
+            o.stop(t + 0.2);
+        });
+    } catch (e) { /* pas de son, ce n'est pas grave */ }
 }
 
-function jouerSon(type) {
+function jouerSon(nom) {
     if (!sonActive) return;
-    if (sons[type]) {
-        sons[type].currentTime = 0;
-        sons[type].play().catch(e => console.log("Erreur son:", e));
+    const a = sons[nom];
+    if (!a || fichierManquant[nom]) { synthese(nom); return; }
+    a.currentTime = 0;
+    a.play().catch(() => synthese(nom));
+}
+
+// =============================================
+// 💬 MESSAGES
+// =============================================
+function afficherMessage(texte, duree) {
+    clearTimeout(delaiMessage);  // évite qu'un ancien message efface le nouveau
+    messageTexte.textContent = texte;
+    messageEducatif.style.display = 'block';
+    if (duree > 0) {
+        delaiMessage = setTimeout(() => { messageEducatif.style.display = 'none'; }, duree);
     }
 }
 
-chargerSons();
+function cacherMessage() {
+    clearTimeout(delaiMessage);
+    messageEducatif.style.display = 'none';
+}
 
 // =============================================
-// INITIALISATION
+// 🎮 NIVEAUX
 // =============================================
-
 function initCanvas() {
     canvas = document.getElementById('jeuCanvas');
     ctx = canvas.getContext('2d');
@@ -90,36 +139,62 @@ function initCanvas() {
 }
 
 function creerDechets() {
+    const cfg = CONFIG.niveaux[niveauActuel];
     dechets = [];
-    const nbDechets = CONFIG.niveaux[niveauActuel].dechets;
-    totalDechetsEl.textContent = nbDechets;
-    
-    for (let i = 0; i < nbDechets; i++) {
+    totalDechetsEl.textContent = cfg.dechets;
+    for (let i = 0; i < cfg.dechets; i++) {
         dechets.push({
             type: Math.floor(Math.random() * TYPES_DECHETS.length),
-            x: 200 + Math.random() * 400,
-            y: 150 + Math.random() * 200,
-            vx: (Math.random() - 0.5) * 1,
-            vy: (Math.random() - 0.5) * 1
+            x: 60 + Math.random() * (canvas.width - 120),
+            y: 170 + Math.random() * (canvas.height - 230),
+            vx: (Math.random() - 0.5) * 2 * cfg.vitesse,
+            vy: (Math.random() - 0.5) * 2 * cfg.vitesse
         });
     }
 }
 
-// =============================================
-// 🌊 DESSIN AVEC LES BELLES VAGUES
-// =============================================
+function demarrerChrono() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        if (!jeuActif) return;
+        tempsRestant--;
+        tempsEl.textContent = tempsRestant;
+        if (tempsRestant <= 0) tempsEcoule();
+    }, 1000);
+}
 
+function tempsEcoule() {
+    jeuActif = false;
+    clearInterval(timer);
+    afficherMessage("⏰ Temps écoulé ! Tu as ramassé " + scoreTotal + " déchets. Essaie encore !", 0);
+}
+
+function lancerNiveau() {
+    const cfg = CONFIG.niveaux[niveauActuel];
+    collectes = 0;
+    scoreEl.textContent = 0;
+    niveauEl.textContent = niveauActuel + 1;
+    tempsRestant = cfg.temps;
+    tempsEl.textContent = tempsRestant;
+    creerDechets();
+    jeuActif = true;
+    demarrerChrono();
+}
+
+// =============================================
+// 🎨 DESSIN
+// =============================================
 function dessiner() {
     // Ciel
     ctx.fillStyle = '#87CEEB';
     ctx.fillRect(0, 0, canvas.width, 120);
-    
+
     // Soleil
     ctx.fillStyle = '#FFD700';
     ctx.beginPath();
     ctx.arc(700, 70, 40, 0, Math.PI * 2);
     ctx.fill();
-    
+
     // Nuages
     ctx.fillStyle = 'rgba(255,255,255,0.8)';
     ctx.beginPath();
@@ -127,254 +202,167 @@ function dessiner() {
     ctx.arc(180, 40, 25, 0, Math.PI * 2);
     ctx.arc(120, 40, 25, 0, Math.PI * 2);
     ctx.fill();
-    
     ctx.beginPath();
     ctx.arc(400, 80, 35, 0, Math.PI * 2);
     ctx.arc(430, 70, 30, 0, Math.PI * 2);
     ctx.arc(370, 70, 30, 0, Math.PI * 2);
     ctx.fill();
-    
+
     // Eau du fleuve
     ctx.fillStyle = '#1E90FF';
     ctx.fillRect(0, 120, canvas.width, canvas.height - 120);
-    
-    // LES BELLES VAGUES
+
+    // Vagues
     for (let i = 0; i < 5; i++) {
         const y = 180 + i * 40;
         ctx.beginPath();
         ctx.strokeStyle = 'rgba(255,255,255,0.4)';
         ctx.lineWidth = 3;
-        
         for (let x = 0; x < canvas.width; x += 30) {
-            if (x === 0) {
-                ctx.moveTo(x, y + Math.sin(x * 0.02 + offsetVagues) * 8);
-            } else {
-                ctx.lineTo(x, y + Math.sin(x * 0.02 + offsetVagues) * 8);
-            }
+            const yy = y + Math.sin(x * 0.02 + offsetVagues) * 8;
+            if (x === 0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
         }
         ctx.stroke();
     }
-    
+
     // Rives
     ctx.fillStyle = '#8B4513';
     ctx.fillRect(0, 110, canvas.width, 15);
     ctx.fillStyle = '#228B22';
     ctx.fillRect(0, 100, canvas.width, 12);
-    
+
     // Arbres
-    ctx.fillStyle = '#8B4513';
-    ctx.fillRect(50, 40, 10, 50);
-    ctx.fillStyle = '#228B22';
-    ctx.beginPath();
-    ctx.arc(55, 30, 15, 0, Math.PI * 2);
-    ctx.fill();
-    
-    ctx.fillStyle = '#8B4513';
-    ctx.fillRect(700, 40, 10, 50);
-    ctx.fillStyle = '#228B22';
-    ctx.beginPath();
-    ctx.arc(705, 30, 15, 0, Math.PI * 2);
-    ctx.fill();
-    
-    // Déchets
-    dechets.forEach(d => {
-        ctx.font = '50px Arial';
-        ctx.fillText(TYPES_DECHETS[d.type].emoji, d.x - 20, d.y - 20);
-        
-        // Petit cercle d'aide
-        ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-        ctx.lineWidth = 2;
+    [[50, 55], [700, 705]].forEach(([tronc, cime]) => {
+        ctx.fillStyle = '#8B4513';
+        ctx.fillRect(tronc, 40, 10, 50);
+        ctx.fillStyle = '#228B22';
         ctx.beginPath();
-        ctx.arc(d.x, d.y - 20, 25, 0, Math.PI * 2);
+        ctx.arc(cime, 30, 15, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    // Une pirogue qui traverse le fleuve (décor, on ne peut pas cliquer dessus)
+    ctx.font = '40px Arial';
+    ctx.fillText('🛶', xPirogue, 140);
+
+    // Déchets : l'emoji est dessiné AU CENTRE de la zone où l'on clique
+    ctx.font = '48px Arial';
+    dechets.forEach((d) => {
+        ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, 34, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.fillText(TYPES_DECHETS[d.type].emoji, d.x, d.y + 2);
     });
 }
 
 function animation() {
     offsetVagues += 0.05;
-    
+    xPirogue += 0.6;
+    if (xPirogue > canvas.width + 40) xPirogue = -40;
+
     if (jeuActif) {
-        dechets.forEach(d => {
+        dechets.forEach((d) => {
             d.x += d.vx;
             d.y += d.vy;
-            
-            if (d.x < 30 || d.x > canvas.width - 30) d.vx *= -1;
-            if (d.y < 150 || d.y > canvas.height - 30) d.vy *= -1;
+            if (d.x < 40 || d.x > canvas.width - 40) d.vx *= -1;
+            if (d.y < 160 || d.y > canvas.height - 40) d.vy *= -1;
         });
     }
-    
+
     dessiner();
     requestAnimationFrame(animation);
 }
 
 // =============================================
-// 👆 CLIC
+// 👆 CLIC / TOUCHER
 // =============================================
-
 function clicSurCanvas(e) {
     if (!jeuActif) return;
-    
+
     const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-    
-    const mouseX = (e.clientX - rect.left) * scaleX;
-    const mouseY = (e.clientY - rect.top) * scaleY;
-    
+    const mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
+
     for (let i = 0; i < dechets.length; i++) {
         const d = dechets[i];
-        const distance = Math.sqrt((mouseX - d.x)**2 + (mouseY - (d.y - 20))**2);
-        
-        if (distance < 30) {
-            jouerSon('plouf');
-            
-            score += TYPES_DECHETS[d.type].points;
-            scoreEl.textContent = score;
-            dechets.splice(i, 1);
-            
-            messageTexte.textContent = "💡 " + TYPES_DECHETS[d.type].conseil;
-            messageEducatif.style.display = 'block';
-            setTimeout(() => messageEducatif.style.display = 'none', 2000);
-            
-            if (dechets.length === 0) {
-                finDeNiveau();
-            }
+        if (Math.hypot(mouseX - d.x, mouseY - d.y) < 40) {  // grande zone : facile pour les petits doigts
+            ramasser(i);
             return;
         }
     }
 }
 
-// =============================================
-// 🏁 FIN DE NIVEAU
-// =============================================
+function ramasser(i) {
+    const d = dechets.splice(i, 1)[0];
+    jouerSon('plouf');
+    collectes++;
+    scoreTotal++;
+    scoreEl.textContent = collectes;
 
-function finDeNiveau() {
-    jeuActif = false;
-    clearInterval(timer);
-    jouerSon('bravo');
-    
-    if (niveauActuel < CONFIG.niveaux.length - 1) {
-        btnNiveauSuivant.style.display = 'inline-block';
-        messageTexte.textContent = "🎉 Niveau terminé ! Clique sur 'Niveau suivant' !";
-        messageEducatif.style.display = 'block';
+    const info = TYPES_DECHETS[d.type];
+    // Chaque texte n'apparaît qu'UNE fois :
+    // - la durée de dégradation dans le message sous le jeu
+    // - le conseil dans « Le savais-tu ? »
+    conseilEl.textContent = info.emoji + " " + info.conseil;
+
+    if (dechets.length === 0) {
+        finDeNiveau(info.emoji + " " + info.degradation);
     } else {
-        messageTexte.textContent = "🏆 FÉLICITATIONS ! Tu as gagné !";
-        messageEducatif.style.display = 'block';
-        btnNiveauSuivant.style.display = 'none';
+        afficherMessage(info.emoji + " " + info.degradation, 5000);
     }
 }
 
 // =============================================
-// 🔄 NIVEAU SUIVANT
+// 🏁 FIN DE NIVEAU, SUITE, RECOMMENCER
 // =============================================
+function finDeNiveau(detail) {
+    jeuActif = false;
+    clearInterval(timer);
+    jouerSon('bravo');
+
+    if (niveauActuel < CONFIG.niveaux.length - 1) {
+        btnNiveauSuivant.style.display = 'inline-block';
+        afficherMessage(detail + " 🎉 Niveau " + (niveauActuel + 1) + " terminé ! Clique sur « Niveau suivant ».", 0);
+    } else {
+        btnNiveauSuivant.style.display = 'none';
+        afficherMessage(detail + " 🏆 FÉLICITATIONS ! Le fleuve est propre : tu as ramassé " + scoreTotal + " déchets !", 0);
+    }
+}
 
 function niveauSuivant() {
     jouerSon('niveau');
-    
     btnNiveauSuivant.style.display = 'none';
     niveauActuel++;
-    
-    niveauEl.textContent = niveauActuel + 1;
-    tempsRestant = CONFIG.niveaux[niveauActuel].temps;
-    tempsEl.textContent = tempsRestant;
-    
-    creerDechets();
-    jeuActif = true;
-    
-    clearInterval(timer);
-    timer = setInterval(() => {
-        if (jeuActif) {
-            tempsRestant--;
-            tempsEl.textContent = tempsRestant;
-            
-            if (tempsRestant <= 0) {
-                jeuActif = false;
-                clearInterval(timer);
-                messageTexte.textContent = "⏰ Temps écoulé !";
-                messageEducatif.style.display = 'block';
-            }
-        }
-    }, 1000);
-    
-    messageTexte.textContent = "Niveau " + (niveauActuel + 1) + " !";
-    messageEducatif.style.display = 'block';
-    setTimeout(() => messageEducatif.style.display = 'none', 2000);
+    lancerNiveau();
+    afficherMessage("Niveau " + (niveauActuel + 1) + " : " + CONFIG.niveaux[niveauActuel].nom + " !", 2000);
 }
-
-// =============================================
-// 🔄 RECOMMENCER
-// =============================================
 
 function recommencer() {
     niveauActuel = 0;
-    score = 0;
-    scoreEl.textContent = "0";
-    niveauEl.textContent = "1";
-    
-    const config = CONFIG.niveaux[0];
-    tempsRestant = config.temps;
-    tempsEl.textContent = tempsRestant;
-    
+    scoreTotal = 0;
     btnNiveauSuivant.style.display = 'none';
-    
-    creerDechets();
-    jeuActif = true;
-    
-    clearInterval(timer);
-    timer = setInterval(() => {
-        if (jeuActif) {
-            tempsRestant--;
-            tempsEl.textContent = tempsRestant;
-            
-            if (tempsRestant <= 0) {
-                jeuActif = false;
-                clearInterval(timer);
-                messageTexte.textContent = "⏰ Temps écoulé !";
-                messageEducatif.style.display = 'block';
-            }
-        }
-    }, 1000);
+    conseilEl.textContent = TEXTE_CONSEIL_DEPART;
+    cacherMessage();
+    lancerNiveau();
 }
 
 // =============================================
 // 🚀 DÉMARRAGE
 // =============================================
-
 window.addEventListener('load', () => {
     initCanvas();
-    
-    niveauActuel = 0;
-    score = 0;
-    scoreEl.textContent = "0";
-    niveauEl.textContent = "1";
-    
-    const config = CONFIG.niveaux[0];
-    tempsRestant = config.temps;
-    tempsEl.textContent = tempsRestant;
-    
-    creerDechets();
+    chargerSons();
+    recommencer();
     animation();
-    
-    timer = setInterval(() => {
-        if (jeuActif) {
-            tempsRestant--;
-            tempsEl.textContent = tempsRestant;
-            
-            if (tempsRestant <= 0) {
-                jeuActif = false;
-                clearInterval(timer);
-                messageTexte.textContent = "⏰ Temps écoulé !";
-                messageEducatif.style.display = 'block';
-            }
-        }
-    }, 1000);
-    
+
     if (modeSonCheckbox) {
-        modeSonCheckbox.addEventListener('change', (e) => {
-            sonActive = e.target.checked;
-        });
+        modeSonCheckbox.addEventListener('change', (e) => { sonActive = e.target.checked; });
     }
-    
     btnRecommencer.onclick = recommencer;
     btnNiveauSuivant.onclick = niveauSuivant;
 });

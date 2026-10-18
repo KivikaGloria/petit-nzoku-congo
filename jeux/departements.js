@@ -7,7 +7,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["12 départements", "10 départements", "15 départements", "16 départements"],
         correct: 2,
         explication: "Le Congo compte désormais 15 départements ! Les 3 nouveaux sont le Congo-Oubangui, le Djoué-Léfini et le Nkéni-Alima.\nSuperficie : 342 000 km²\nPopulation : plus de 6 millions d'habitants",
-        image: "", 
+        image: "",
         pictos: ["1️⃣2️⃣", "1️⃣0️⃣", "1️⃣5️⃣", "1️⃣6️⃣"]
     },
     {
@@ -15,7 +15,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Dolisie", "Sibiti", "Madingou", "Kinkala"],
         correct: 0,
         explication: "Chef-lieu : Dolisie\nSuperficie : 25 942 km²\nPopulation : environ 335 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🏙️", "🏡", "🏘️", "🧱"]
     },
     {
@@ -23,7 +23,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Ouesso", "Impfondo", "Owando", "Ewo"],
         correct: 0,
         explication: "Chef-lieu : Ouesso\nSuperficie : 55 800 km²\nPopulation : environ 115 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🪵", "🐆", "🌲", "🛶"]
     },
     {
@@ -31,7 +31,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Kinkala", "Mindouli", "Kindamba", "Kalamu"],
         correct: 0,
         explication: "Chef-lieu : Kinkala\nSuperficie : 33 955 km²\nPopulation : environ 330 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🏡", "🌾", "🧱", "🗺️"]
     },
     {
@@ -39,7 +39,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Sibiti", "Madingou", "Owando", "Nkayi"],
         correct: 1,
         explication: "Chef-lieu : Madingou\nSuperficie : 12 265 km²\nPopulation : environ 440 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🏢", "🏛️", "🏠", "🚜"]
     },
     {
@@ -47,7 +47,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Oyo", "Owando", "Makoua", "Mossaka"],
         correct: 1,
         explication: "Chef-lieu : Owando\nSuperficie : 48 250 km²\nPopulation : environ 230 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🛶", "🌊", "🐟", "🐊"]
     },
     {
@@ -55,7 +55,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Pointe-Noire", "Loango", "Diosso", "Madingo-Kayes"],
         correct: 1,
         explication: "Chef-lieu : Loango\nSuperficie : 13 650 km²\nPopulation : près de 120 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🚢", "👑", "🌊", "🏖️"]
     },
     {
@@ -63,7 +63,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["La Sangha", "Impfondo", "La Cuvette", "Le Congo-Oubangui"],
         correct: 1,
         explication: "Chef-lieu : Impfondo\nSuperficie : 66 044 km²\nPopulation : environ 220 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🧭", "🛶", "🐊", "🌲"]
     },
     {
@@ -71,7 +71,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Sibiti", "Djambala", "Ewo", "Oyo"],
         correct: 0,
         explication: "Chef-lieu : Sibiti\nSuperficie : 20 950 km²\nPopulation : environ 125 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🏡", "🌳", "🪵", "🌿"]
     },
     {
@@ -79,7 +79,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Gamboma", "Ngo", "Djambala", "Lékana"],
         correct: 2,
         explication: "Chef-lieu : Djambala\nSuperficie : 38 400 km²\nPopulation : environ 290 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🌾", "🏘️", "🏡", "🥔"]
     },
     {
@@ -87,7 +87,7 @@ const QUESTIONS_DEPARTEMENTS = [
         options: ["Ewo", "Kéllé", "Etoumbi", "Okoyo"],
         correct: 0,
         explication: "Chef-lieu : Ewo\nSuperficie : 26 600 km²\nPopulation : environ 105 000 habitants",
-        image: "", 
+        image: "",
         pictos: ["🐆", "🛶", "🌳", "🪵"]
     }
 ];
@@ -96,16 +96,19 @@ const QUESTIONS_DEPARTEMENTS = [
 // 🎮 LOGIQUE INTERNE DU JEU
 // =============================================
 
+const DUREE_CHRONO = 60;
+
 let questions_du_jeu = [];
 let indexQuestion = 0;
 let score = 0;
 let modePicto = false;
 let sonActive = true;
+let chronoActif = true;
 const sons = { correct: null, incorrect: null, bravo: null };
 
-// Variables du Chronomètre Global
-let chrono; 
-let tempsRestant = 60; 
+// Variables du chronomètre global
+let chrono;
+let tempsRestant = DUREE_CHRONO;
 
 // Éléments DOM
 const questionEl = document.getElementById('question');
@@ -123,8 +126,14 @@ const modePictoCheckbox = document.getElementById('mode-picto');
 const modeSonCheckbox = document.getElementById('mode-son');
 const btnLire = document.getElementById('btn-lire');
 const tempsEl = document.getElementById('temps');
-const chronoConteneur = document.getElementById('chrono-conteneur'); 
+const chronoConteneur = document.getElementById('chrono-conteneur');
+const barreTempsEl = document.getElementById('barre-temps');
+const barreConteneurEl = document.querySelector('.barre-temps-container');
+const modeChronoCheckbox = document.getElementById('mode-chrono');
 
+// ---------------------------------------------
+// 🔊 Sons
+// ---------------------------------------------
 function initSons() {
     try {
         sons.correct = new Audio('../sons/correct.mp3');
@@ -143,6 +152,9 @@ function jouerSon(type) {
     }
 }
 
+// ---------------------------------------------
+// 🎲 Sélection des questions
+// ---------------------------------------------
 function selectionnerQuestions(nbQuestions = 5) {
     let stock = [...QUESTIONS_DEPARTEMENTS];
     for (let i = stock.length - 1; i > 0; i--) {
@@ -152,17 +164,42 @@ function selectionnerQuestions(nbQuestions = 5) {
     return stock.slice(0, Math.min(nbQuestions, stock.length));
 }
 
+// ---------------------------------------------
+// ⏱️ Chronomètre global
+// ---------------------------------------------
+function mettreAJourBarreTemps() {
+    if (barreTempsEl) {
+        barreTempsEl.style.width = (tempsRestant / DUREE_CHRONO * 100) + '%';
+    }
+}
+
+function afficherChrono(visible) {
+    const affichage = visible ? '' : 'none';
+    if (chronoConteneur) chronoConteneur.style.display = affichage;
+    if (barreConteneurEl) barreConteneurEl.style.display = affichage;
+}
+
 function lancerChronoGlobal() {
-    clearInterval(chrono); 
-    tempsRestant = 60; 
+    clearInterval(chrono);
+    afficherChrono(chronoActif);
+
+    // Chrono désactivé : pas de limite de temps
+    if (!chronoActif) {
+        tempsRestant = DUREE_CHRONO;
+        return;
+    }
+
+    tempsRestant = DUREE_CHRONO;
     if (tempsEl) tempsEl.textContent = tempsRestant;
-    
+    mettreAJourBarreTemps();
+
     if (chronoConteneur) chronoConteneur.classList.remove('alerte-rouge');
-    if (tempsEl) tempsEl.style.color = ''; 
+    if (tempsEl) tempsEl.style.color = '';
 
     chrono = setInterval(() => {
         tempsRestant--;
         if (tempsEl) tempsEl.textContent = tempsRestant;
+        mettreAJourBarreTemps();
 
         if (tempsRestant <= 10 && tempsEl) {
             tempsEl.style.color = 'red';
@@ -176,37 +213,47 @@ function lancerChronoGlobal() {
 }
 
 function gererTempsEcouleGlobal() {
+    window.speechSynthesis && window.speechSynthesis.cancel();
     const tousLesBoutons = document.querySelectorAll('.btn-reponse');
     tousLesBoutons.forEach(btn => btn.disabled = true);
     afficherResultatsFinaux(true);
 }
 
+// ---------------------------------------------
+// 🚀 Initialisation
+// ---------------------------------------------
 function initialiserJeu(nb = 5) {
     questions_du_jeu = selectionnerQuestions(nb);
     indexQuestion = 0;
     score = 0;
-    
+
     if (scoreEl) scoreEl.textContent = "0";
     if (totalQuestionsEls) {
         totalQuestionsEls.forEach(el => el.textContent = questions_du_jeu.length);
     }
-    
+
     mettreAJourEtoiles();
     chargerQuestion();
-    lancerChronoGlobal(); 
+    lancerChronoGlobal();
 }
 
+// ---------------------------------------------
+// ❓ Affichage d'une question
+// ---------------------------------------------
 function chargerQuestion() {
     if (feedbackEl) feedbackEl.style.display = 'none';
     if (btnSuivant) btnSuivant.style.display = 'none';
-    
+
+    // On arrête toute lecture vocale de la question précédente
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
     if (questions_du_jeu.length === 0) return;
-    
-    let qActuelle = questions_du_jeu[indexQuestion];
-    
+
+    const qActuelle = questions_du_jeu[indexQuestion];
+
     if (questionActuelleEl) questionActuelleEl.textContent = indexQuestion + 1;
     if (questionEl) questionEl.textContent = qActuelle.question;
-    
+
     if (imageQuestion) {
         if (qActuelle.image) {
             imageQuestion.src = qActuelle.image;
@@ -215,28 +262,35 @@ function chargerQuestion() {
             imageQuestion.style.display = 'none';
         }
     }
-    
+
     if (reponsesEl) {
         reponsesEl.innerHTML = '';
         qActuelle.options.forEach((option, i) => {
             const btn = document.createElement('button');
             btn.className = 'btn-reponse';
-            
-            let prefixe = (modePicto && qActuelle.pictos && qActuelle.pictos[i]) ? `<span class="picto">${qActuelle.pictos[i]}</span> ` : '';
+
+            const prefixe = (modePicto && qActuelle.pictos && qActuelle.pictos[i])
+                ? `<span class="picto">${qActuelle.pictos[i]}</span> `
+                : '';
             btn.innerHTML = `${prefixe}${option}`;
-            
+
             btn.addEventListener('click', () => validerChoix(i, btn));
             reponsesEl.appendChild(btn);
         });
     }
 }
 
+// ---------------------------------------------
+// ✅ Validation d'une réponse
+// ---------------------------------------------
 function validerChoix(indexChoisi, boutonClique) {
     const qActuelle = questions_du_jeu[indexQuestion];
     const tousLesBoutons = document.querySelectorAll('.btn-reponse');
-    
+
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
     tousLesBoutons.forEach(btn => btn.disabled = true);
-    
+
     if (indexChoisi === qActuelle.correct) {
         score++;
         if (scoreEl) scoreEl.textContent = score;
@@ -245,26 +299,29 @@ function validerChoix(indexChoisi, boutonClique) {
         jouerSon('correct');
     } else {
         if (boutonClique) boutonClique.classList.add('incorrect');
-        
+
         if (tousLesBoutons[qActuelle.correct]) {
             tousLesBoutons[qActuelle.correct].classList.add('correct');
         }
-        
+
         if (feedbackMessage) feedbackMessage.innerHTML = `<span class="feedback-badge mauvaise">❌ Oups !</span>`;
         jouerSon('incorrect');
     }
-    
+
     if (explicationEl) explicationEl.textContent = qActuelle.explication;
     if (feedbackEl) feedbackEl.style.display = 'block';
     if (btnSuivant) btnSuivant.style.display = 'block';
     mettreAJourEtoiles();
 
-    // ⬇️ SCROLL AUTO : L'écran descend sur l'explication et le bouton "Suivant"
+    // ⬇️ Scroll auto : l'écran descend sur l'explication et le bouton "Suivant"
     if (feedbackEl) {
         feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
 
+// ---------------------------------------------
+// ⭐ Étoiles
+// ---------------------------------------------
 function mettreAJourEtoiles() {
     if (!etoilesEl) return;
     let etoilesGenerees = '';
@@ -274,25 +331,41 @@ function mettreAJourEtoiles() {
     etoilesEl.textContent = etoilesGenerees;
 }
 
+// ---------------------------------------------
+// 🗣️ Lecture vocale : question + choix de réponse
+// ---------------------------------------------
 function lireQuestionVocalement() {
-    if ('speechSynthesis' in window && questions_du_jeu[indexQuestion]) {
-        window.speechSynthesis.cancel();
-        const texte = questions_du_jeu[indexQuestion].question;
-        const énoncé = new SpeechSynthesisUtterance(texte);
-        énoncé.lang = 'fr-FR';
-        window.speechSynthesis.speak(énoncé);
-    }
+    if (!('speechSynthesis' in window) || !questions_du_jeu[indexQuestion]) return;
+
+    window.speechSynthesis.cancel();
+
+    const q = questions_du_jeu[indexQuestion];
+
+    // On construit un texte avec la question, puis chaque choix
+    const choix = q.options
+        .map(option => `${option}.`)
+        .join(' ');
+
+    const enonce = new SpeechSynthesisUtterance(`${q.question} ${choix}`);
+    enonce.lang = 'fr-FR';
+    enonce.rate = 0.9; // un peu plus lent pour les enfants
+    window.speechSynthesis.speak(enonce);
 }
 
+// ---------------------------------------------
+// 🏆 Résultats finaux
+// ---------------------------------------------
 function afficherResultatsFinaux(parTempsEcoule = false) {
-    clearInterval(chrono); 
+    clearInterval(chrono);
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     jouerSon('bravo');
+
     const conteneurPrincipal = document.querySelector('.quiz-container');
     if (!conteneurPrincipal) return;
-    
+
     const ratio = score / questions_du_jeu.length;
     let messageFin = "Félicitations ! Continue d'explorer le quiz pour devenir incollable ! 🗺️";
-    
+
     if (parTempsEcoule) {
         messageFin = "⏱️ Pas de chance ! Le temps global de 60 secondes est écoulé !";
     } else if (ratio === 1) {
@@ -310,10 +383,13 @@ function afficherResultatsFinaux(parTempsEcoule = false) {
             <button class="bouton" onclick="location.reload()">🔁 Recommencer</button>
         </div>
     `;
-    
+
     conteneurPrincipal.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+// =============================================
+// 🎛️ ÉVÉNEMENTS
+// =============================================
 if (btnSuivant) {
     btnSuivant.addEventListener('click', () => {
         if (tempsRestant <= 0) {
@@ -324,8 +400,8 @@ if (btnSuivant) {
         indexQuestion++;
         if (indexQuestion < questions_du_jeu.length) {
             chargerQuestion();
-            
-            // ⬆️ SCROLL AUTO : L'écran remonte tout en haut pour la nouvelle question
+
+            // ⬆️ Scroll auto : l'écran remonte tout en haut pour la nouvelle question
             const conteneurQuiz = document.querySelector('.quiz-container');
             if (conteneurQuiz) {
                 conteneurQuiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -345,6 +421,13 @@ if (modePictoCheckbox) {
 
 if (modeSonCheckbox) {
     modeSonCheckbox.addEventListener('change', (e) => { sonActive = e.target.checked; });
+}
+
+if (modeChronoCheckbox) {
+    modeChronoCheckbox.addEventListener('change', (e) => {
+        chronoActif = e.target.checked;
+        lancerChronoGlobal(); // relance à 60 s si activé, arrête et masque si désactivé
+    });
 }
 
 if (btnLire) {

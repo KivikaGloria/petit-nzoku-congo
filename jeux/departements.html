@@ -20,11 +20,10 @@
                     <span class="score-label">Score</span>
                     <span class="score-valeur" id="score">0</span>
                 </div>
-                
-                <div id="chrono-conteneur">⏱️ Temps restant : <span id="temps">15</span>s</div>
-                
-                <div class="etoiles-box" id="etoiles">
-                    </div>
+
+                <div id="chrono-conteneur">⏱️ Temps restant : <span id="temps">60</span>s</div>
+
+                <div class="etoiles-box" id="etoiles"></div>
             </div>
 
             <div class="barre-temps-container">
@@ -33,14 +32,13 @@
 
             <div class="question-box">
                 <h2 id="question">Prêt pour le grand défi ?</h2>
-                
+
                 <div class="question-image" id="question-image">
                     <img src="" alt="Carte du département" id="image-question" style="display: none;">
                 </div>
             </div>
 
-            <div class="reponses" id="reponses">
-                </div>
+            <div class="reponses" id="reponses"></div>
 
             <div class="feedback" id="feedback" style="display: none;">
                 <div class="feedback-content">
@@ -55,7 +53,7 @@
 
             <div class="options-accessibilite">
                 <h3>🌍 Options pour tous les enfants</h3>
-                
+
                 <div class="option-grille">
                     <div class="option">
                         <label class="switch-label">
@@ -66,7 +64,7 @@
                             <span class="slider"></span>
                         </label>
                     </div>
-                    
+
                     <div class="option">
                         <label class="switch-label">
                             <span class="option-emoji">🔊</span> Sons
@@ -76,14 +74,24 @@
                             <span class="slider"></span>
                         </label>
                     </div>
-                    
+
+                    <div class="option">
+                        <label class="switch-label">
+                            <span class="option-emoji">⏱️</span> Chrono
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" id="mode-chrono" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
                     <div class="option">
                         <button id="btn-lire" class="bouton-icone">
                             <span class="option-emoji">🗣️</span> Lire la question
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="message-signes" id="message-signes">
                     <p>🤟 Version langue des signes bientôt disponible</p>
                 </div>

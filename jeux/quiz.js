@@ -281,13 +281,13 @@ TOUTES_LES_QUESTIONS.push(
 
 TOUTES_LES_QUESTIONS.push(
     // ---------- 🌱 FACILE ----------
-    { niveau: 1, question: "Quel pays a colonisé le Congo-Brazzaville ?", options: ["La France", "La Belgique", "Le Portugal", "Le Royaume-Uni"], correct: 0,
+    { niveau: 1, question: "Quel pays a colonisé le Congo-Brazzaville ?", options: ["La France", "La Belgique", "Le Portugal", "L'Angleterre"], correct: 0,
       explication: "Notre pays était une colonie française, le Moyen-Congo. Le Congo voisin (aujourd'hui la RDC) était une colonie belge.", pictos: ["🇫🇷", "🇧🇪", "🇵🇹", "🇬🇧"] },
     { niveau: 1, question: "Quelle ville congolaise possède le grand port sur l'océan Atlantique ?", options: ["Pointe-Noire", "Dolisie", "Brazzaville", "Owando"], correct: 0,
       explication: "Les bateaux du monde entier s'arrêtent à Pointe-Noire, notre capitale économique.", pictos: ["⚓", "🏘️", "🏛️", "🌲"] },
     { niveau: 1, question: "Quel oiseau gris à la queue rouge, très doué pour imiter les voix, vit dans nos forêts ?", options: ["Le perroquet gris", "Le flamant rose", "Le toucan", "L'aigle"], correct: 0,
       explication: "Le perroquet gris est menacé, car on l'attrape pour le vendre. Le toucan, lui, vit en Amérique.", pictos: ["🦜", "🦩", "🐦", "🦅"] },
-    { niveau: 1, question: "Quel énorme animal passe ses journées dans l'eau et mange de l'herbe la nuit ?", options: ["L'hippopotame", "Le rhinocéros", "Le zèbre", "La girafe"], correct: 0,
+    { niveau: 1, question: "Quel mammifère passe ses journées dans l'eau et mange de l'herbe la nuit ?", options: ["L'hippopotame", "Le rhinocéros", "Le zèbre", "La girafe"], correct: 0,
       explication: "L'hippopotame reste dans l'eau le jour pour se protéger du soleil, puis il broute la nuit.", pictos: ["🦛", "🦏", "🦓", "🦒"] },
     { niveau: 1, question: "Que veut dire « braconnage » ?", options: ["Chasser des animaux protégés, c'est interdit", "Planter des arbres", "Pêcher pour s'amuser", "Photographier les animaux"], correct: 0,
       explication: "Le braconnage met en danger les éléphants, les gorilles et les pangolins. Il est interdit par la loi.", pictos: ["🚫", "🌱", "🎣", "📷"] },
@@ -297,10 +297,10 @@ TOUTES_LES_QUESTIONS.push(
       explication: "Chez nous, ce sont les Diables Rouges. Lions Indomptables : Cameroun. Éléphants : Côte d'Ivoire. Léopards : RDC.", pictos: ["😈", "🦁", "🐘", "🐆"] },
     { niveau: 1, question: "Que veut dire « Nzoku » ?", options: ["Éléphant", "Lion", "Fleuve", "Soleil"], correct: 0,
       explication: "Nzoku veut dire éléphant. C'est pour ça que notre mascotte s'appelle Petit Nzoku !", pictos: ["🐘", "🦁", "🌊", "☀️"] },
-    { niveau: 1, question: "Quel fruit sucré porte une couronne de feuilles piquantes ?", options: ["L'ananas", "La mangue", "La banane", "La papaye"], correct: 0,
+    { niveau: 1, question: "Quel fruit sucré cultivé au Congo porte une couronne de feuilles piquantes ?", options: ["L'ananas", "La mangue", "La banane", "La papaye"], correct: 0,
       explication: "L'ananas pousse très bien dans le climat chaud et humide du Congo.", pictos: ["🍍", "🥭", "🍌", "🍈"] },
-    { niveau: 1, question: "Quel fruit ressemble à une grosse banane mais se mange cuit ?", options: ["La banane plantain", "La pastèque", "La papaye", "Le raisin"], correct: 0,
-      explication: "La banane plantain se mange bouillie, frite ou grillée, avec du poisson ou de la viande.", pictos: ["🍌", "🍉", "🍈", "🍇"] },
+    /*{ niveau: 1, question: "Quel fruit ressemble à une grosse banane mais se mange cuit ?", options: ["La banane plantain", "La pastèque", "La papaye", "Le raisin"], correct: 0,
+      explication: "La banane plantain se mange bouillie, frite ou grillée, avec du poisson ou de la viande.", pictos: ["🍌", "🍉", "🍈", "🍇"] },*/
     { niveau: 1, question: "Quelle couleur est en haut à gauche du drapeau congolais ?", options: ["Le vert", "Le rouge", "Le jaune", "Le bleu"], correct: 0,
       explication: "Le vert est en haut près du mât, le jaune passe en diagonale au milieu et le rouge est en bas.", pictos: ["🟢", "🔴", "🟡", "🔵"] },
     { niveau: 1, question: "Quel est l'animal terrestre le plus lourd du monde ?", options: ["L'éléphant", "La girafe", "Le rhinocéros", "L'hippopotame"], correct: 0,

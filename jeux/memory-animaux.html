@@ -6,6 +6,7 @@
     <title>Memory des animaux - Petit Nzoku</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="memory-animaux.css">
+    <link rel="stylesheet" href="memory-animaux-plus.css">
 </head>
 <body>
     <header>
@@ -16,26 +17,23 @@
     <main>
         <div class="memory-container">
             <!-- En-tête du jeu -->
-           <div class="memory-header" style="text-align:center; margin-bottom:20px;">
-    <h3 id="niveau-display" style="color: #009639;">Niveau 1 / 4</h3>
-    <p>Coups : <b id="coups">0</b></p>
-</div>
-<div id="memory-grid"></div>
-
-            <!-- Grille du memory -->
-            <div class="memory-grid" id="memory-grid">
-                <!-- Les cartes seront générées par JS -->
+            <div class="memory-header">
+                <div class="niveau-box" id="niveau-display">Niveau 1 / 4</div>
+                <div class="coups-box">Coups : <span id="coups">0</span></div>
             </div>
 
-            <!-- Contrôles -->
-            <div class="memory-controles">
-                <button id="btn-nouveau" class="bouton">🔄 Nouvelle partie</button>
-                <button id="btn-niveau-suivant" class="bouton" style="display: none;">➡️ Niveau suivant</button>
-            </div>
+            <!-- Grille du memory (une seule !) : les cartes sont générées par JavaScript -->
+            <div id="memory-grid" class="memory-grid" role="group" aria-label="Les cartes du memory"></div>
 
-            <!-- Message de félicitations -->
-            <div class="message-felicitations" id="messageFelicitations" style="display: none;">
+            <!-- Message : fait sur l'animal, félicitations -->
+            <div class="message-felicitations" id="messageFelicitations" role="status" aria-live="polite" style="display: none;">
                 <p id="messageTexte"></p>
+            </div>
+
+            <!-- Boutons -->
+            <div class="memory-controles">
+                <button id="btn-nouveau" class="bouton" type="button">🔄 Nouvelle partie</button>
+                <button id="btn-niveau-suivant" class="bouton" type="button" style="display: none;">➡️ Niveau suivant</button>
             </div>
 
             <!-- Options d'accessibilité -->
@@ -43,7 +41,7 @@
                 <h3>🖐️ Options</h3>
                 <div class="option-grille">
                     <div class="option">
-                        <label class="switch-label">
+                        <label class="switch-label" for="mode-son">
                             <span class="option-emoji">🔊</span> Sons
                         </label>
                         <label class="switch">
