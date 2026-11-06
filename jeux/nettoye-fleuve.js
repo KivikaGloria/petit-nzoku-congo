@@ -45,6 +45,7 @@ let offsetVagues = 0;
 let xPirogue = -40;
 let sonActive = true;
 let delaiMessage = null;
+let tailleCourante = 48;   // taille des déchets dans le dessin
 
 const scoreEl = document.getElementById('score');
 const totalDechetsEl = document.getElementById('total-dechets');
@@ -110,6 +111,13 @@ function jouerSon(nom) {
     a.play().catch(() => synthese(nom));
 }
 
+// Sur téléphone le dessin est réduit à l'écran : on agrandit les déchets
+// pour qu'ils restent faciles à voir et à toucher du doigt.
+function majTaille() {
+    const largeurEcran = canvas.getBoundingClientRect().width || canvas.width;
+    tailleCourante = Math.min(80, Math.max(48, Math.round(36 * canvas.width / largeurEcran)));
+}
+
 // =============================================
 // 💬 MESSAGES
 // =============================================
@@ -136,17 +144,20 @@ function initCanvas() {
     canvas.width = 800;
     canvas.height = 400;
     canvas.addEventListener('click', clicSurCanvas);
+    majTaille();
+    window.addEventListener('resize', majTaille);
 }
 
 function creerDechets() {
     const cfg = CONFIG.niveaux[niveauActuel];
+    const m = tailleCourante * 0.8;
     dechets = [];
     totalDechetsEl.textContent = cfg.dechets;
     for (let i = 0; i < cfg.dechets; i++) {
         dechets.push({
             type: Math.floor(Math.random() * TYPES_DECHETS.length),
-            x: 60 + Math.random() * (canvas.width - 120),
-            y: 170 + Math.random() * (canvas.height - 230),
+            x: m + Math.random() * (canvas.width - 2 * m),
+            y: 165 + Math.random() * (canvas.height - 165 - m),
             vx: (Math.random() - 0.5) * 2 * cfg.vitesse,
             vy: (Math.random() - 0.5) * 2 * cfg.vitesse
         });
@@ -249,14 +260,14 @@ function dessiner() {
     ctx.fillText('🛶', xPirogue, 140);
 
     // Déchets : l'emoji est dessiné AU CENTRE de la zone où l'on clique
-    ctx.font = '48px Arial';
+    ctx.font = tailleCourante + 'px Arial';
     dechets.forEach((d) => {
         ctx.strokeStyle = 'rgba(255,255,255,0.5)';
         ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(d.x, d.y, 34, 0, Math.PI * 2);
+        ctx.arc(d.x, d.y, tailleCourante * 0.7, 0, Math.PI * 2);
         ctx.stroke();
-        ctx.fillText(TYPES_DECHETS[d.type].emoji, d.x, d.y + 2);
+        ctx.fillText(TYPES_DECHETS[d.type].emoji, d.x, d.y + tailleCourante * 0.04);
     });
 }
 
@@ -266,11 +277,12 @@ function animation() {
     if (xPirogue > canvas.width + 40) xPirogue = -40;
 
     if (jeuActif) {
+        const m = tailleCourante * 0.7;
         dechets.forEach((d) => {
             d.x += d.vx;
             d.y += d.vy;
-            if (d.x < 40 || d.x > canvas.width - 40) d.vx *= -1;
-            if (d.y < 160 || d.y > canvas.height - 40) d.vy *= -1;
+            if (d.x < m || d.x > canvas.width - m) d.vx *= -1;
+            if (d.y < 160 || d.y > canvas.height - m) d.vy *= -1;
         });
     }
 
@@ -290,7 +302,7 @@ function clicSurCanvas(e) {
 
     for (let i = 0; i < dechets.length; i++) {
         const d = dechets[i];
-        if (Math.hypot(mouseX - d.x, mouseY - d.y) < 40) {  // grande zone : facile pour les petits doigts
+        if (Math.hypot(mouseX - d.x, mouseY - d.y) < tailleCourante * 0.85) {  // grande zone : facile pour les petits doigts
             ramasser(i);
             return;
         }
