@@ -58,3 +58,49 @@ input:checked + .slider:before { transform: translateX(26px); }
 input:focus-visible + .slider { outline: 4px solid #1a5fd0; outline-offset: 3px; }
 
 .note-estimations { font-size: 0.85rem !important; color: #666 !important; font-style: italic; margin-top: 8px; }
+
+/* ============================================= */
+/* 📱 TÉLÉPHONE : page plus compacte              */
+/* ============================================= */
+html, body { max-width: 100%; overflow-x: hidden; }
+canvas, img { max-width: 100%; }
+
+@media (max-width: 600px) {
+    header { padding: 0.8rem 1rem 1.4rem; }
+    header h1 { font-size: 1.3rem; }
+    header p { font-size: 0.95rem; }
+    main { padding: 0.5rem; }
+
+    .jeu-container { padding: 4px; }
+
+    /* Score, chrono et niveau sur UNE seule ligne */
+    .jeu-container .jeu-header {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 8px 10px;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+    .score-box, .timer-box, .niveau-box { padding: 6px 10px; font-size: 0.85rem; white-space: nowrap; }
+    .timer-box { font-size: 1rem; }
+    .score-label { display: none; }
+    .score-box::before { content: "🗑️ "; }
+    .score-valeur { font-size: 1.05rem; padding: 1px 7px; margin: 0 3px; }
+
+    .canvas-container { padding: 4px; border-radius: 14px; margin-bottom: 10px; }
+    #jeuCanvas { border-radius: 10px; }
+
+    .message-educatif { font-size: 1rem; padding: 10px; margin: 10px 0; min-height: 0; }
+
+    .controles { flex-direction: row; gap: 8px; margin: 10px 0; }
+    .controles .bouton { width: auto; flex: 1; padding: 10px 12px; font-size: 1rem; }
+
+    .conseils-eco { padding: 12px; margin: 10px 0; }
+    .conseils-eco h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    .conseils-eco p { font-size: 0.95rem; line-height: 1.4; }
+
+    .options-accessibilite { padding: 12px; margin-top: 10px; }
+    .options-accessibilite h3 { font-size: 1.05rem; }
+    footer { padding: 1rem; }
+}
